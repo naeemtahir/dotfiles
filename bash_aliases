@@ -135,7 +135,10 @@ alias 2ico='function _2ico() { if [ "$#" -eq 1 ]; then convert "$1" -define icon
 alias 2jpg='function _2jpg() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".jpg; else echo "Usage: 2jpg <image/document file>"; fi };_2jpg' # Requires ImageMagick
 alias 2pdf='function _2pdf() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".pdf; else echo "Usage: 2pdf <image file>"; fi };_2pdf' # Requires ImageMagick
 alias 2png='function _2png() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 -alpha off "$1".png; else echo "Usage: 2png <image/document file>"; fi };_2png' # Requires ImageMagick
-alias nosound='function _nosound() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" -map 0:0 -acodec copy -vcodec copy "$1".mp4; else echo "Usage: nosound <mp4 file>"; fi };_nosound' # Requires Ffmpeg (https://unix.stackexchange.com/questions/6402/how-to-remove-an-audio-track-from-an-mp4-video-file)
+alias remove_audio='function _remove_audio() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" -map 0:0 -acodec copy -vcodec copy "$1".mp4; else echo "Usage: remove_audio <mp4 file>"; fi };_remove_audio' # Requires Ffmpeg (https://unix.stackexchange.com/questions/6402/how-to-remove-an-audio-track-from-an-mp4-video-file)
+alias md2html='function _md2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t html -s -o "$1".html; else echo "Usage: md2html <markdown file>"; fi };_md2html' # Requires pandoc 
+alias md2pdf='function _md2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -s -o "$1".pdf; else echo "Usage: md2pdf <markdown file>"; fi };_md2pdf' # Requires pandoc 
+alias md2docx='function _md2docx() { if [ "$#" -eq 1 ]; then pandoc -s "$1" -o "$1".docx; else echo "Usage: md2docx <markdown file>"; fi };_md2docx' # Requires pandoc 
 
 # Photo Management
 alias display_all='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) -exec display "{}" \;'
