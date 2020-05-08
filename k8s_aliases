@@ -1,0 +1,33 @@
+# Add following lines to ~/.bashrc
+#if [ -f ~/.k8s_aliases ]; then
+#    . ~/.k8s_aliases
+#fi
+
+alias k='kubectl'
+alias kd='kubectl describe'
+alias ke='kubectl exec'
+alias kg='kubectl get'
+
+alias kci='kubectl cluster-info'
+alias kei='kubectl exec -it'
+alias klg='kubectl logs'
+
+alias kcre='kubectl create'
+alias kdel='kubectl delete'
+alias kexp='kubectl explain'
+alias krun='kubectl run'
+alias ktop='kubectl top'
+
+alias kconf='kubectl config'
+alias kdiff='kubectl diff'
+alias kroll='kubectl rollout'
+
+alias kapply='kubectl apply'
+alias kpatch='kubectl patch'
+alias kscale='kubectl scale'
+
+alias kportf='kubectl port-forward'
+alias kproxy='function _kproxy { if [ "$#" -ge 1 ]; then kubectl proxy --port=$1; else kubectl proxy --port=8080; fi };_kproxy'
+
+alias kdpod='kubectl describe pod'
+alias kgpods='kubectl get pods'
