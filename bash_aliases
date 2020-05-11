@@ -161,6 +161,7 @@ alias tma='tmux attach -t'
 alias tmk='tmux kill-session -t'
 
 # Miscelleneous
+alias delete_conflicted='find . -name "*conflicted*" -delete'
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias diff='colordiff' 				# Requires colordiff
     alias top='htop' 					# Requires htop
