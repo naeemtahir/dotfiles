@@ -98,7 +98,7 @@ fi
 alias b64encode='python -c "import sys, base64; print base64.b64encode(sys.argv[1])"'
 alias b64decode='python -c "import sys, base64; print base64.b64decode(sys.argv[1]).decode(\"utf-8\")"'
 alias countf='find . -maxdepth 1 -type f | wc -l'               # Count files in current dir
-alias countfn='find . -type f | wc -l'                          # Count files in current dir and its subdirectories (nested)
+alias countfr='find . -type f | wc -l'                          # Count files in current dir and its subdirectories
 alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
@@ -130,7 +130,7 @@ alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then youtube-dl -x --aud
 alias video-dl='function _video-dl { if [ "$#" -eq 1 ]; then youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo "Usage: video-dl <video-url>"; fi };_video-dl'
 
 # Format conversion
-alias 2mp3='function _2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: 2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_2mp3'   # Requires ffmpeg
+alias vid2mp3='function _2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: 2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_2mp3'   # Requires ffmpeg
 alias 2ico='function _2ico() { if [ "$#" -eq 1 ]; then convert "$1" -define icon:auto-resize=128,64,48,32,16 "$1".ico; else echo "Usage: 2ico <image file>"; fi };_2ico' # Requires ImageMagick
 alias 2jpg='function _2jpg() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".jpg; else echo "Usage: 2jpg <image/document file>"; fi };_2jpg' # Requires ImageMagick
 alias 2pdf='function _2pdf() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".pdf; else echo "Usage: 2pdf <image file>"; fi };_2pdf' # Requires ImageMagick
