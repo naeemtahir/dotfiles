@@ -102,6 +102,7 @@ alias countfr='find . -type f | wc -l'                          # Count files in
 alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
+alias getip="dig +short"
 alias now='date +"%d-%m-%Y %T"'
 alias ts2local='python -c "import sys, time; print time.strftime(\"%Y-%m-%d %H:%M:%S\", time.localtime(float(sys.argv[1])/1000))"'
 alias urlencode='python -c "import sys, urllib; print urllib.quote_plus(sys.argv[1])"'
