@@ -169,6 +169,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias diff='colordiff' 				# Requires colordiff
     alias top='htop' 					# Requires htop
     alias f='nautilus ./'               # Opens current directory in file manager
+    alias o='xdg-open'                  # Open file with associated program
     alias refresh_menu='touch $HOME/.local/share/applications/a && rm $HOME/.local/share/applications/a'
 
     # Logs
@@ -185,4 +186,5 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias upgrade_dist='sudo apt-get update && sudo apt-get dist-upgrade'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias f='open -a Finder ./'  # Opens current directory in MacOS Finder - Mac
+    alias o='open'               # Open file with associated program
 fi
