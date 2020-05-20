@@ -50,6 +50,7 @@ alias .10='cd ../../../../../../../../../..'
 alias qa='alias | grep'                 # Search alias
 alias qf='find . -name'                 # Search file(s)/folder(s) matching name pattern
 alias qg='grep --color=auto -rin . -e'  # Search files containing text (recursive, case insensitive, file names only)
+alias qgc='grep --color=auto -rn . -e'  # Search files containing text (recursive, file names only)
 alias qh='history | grep'               # Search command in history
 alias qps='ps -ef | grep'               # Search process
 
@@ -102,7 +103,8 @@ alias countfr='find . -type f | wc -l'                          # Count files in
 alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
-alias getip="dig +short"
+alias ipof='dig +short'
+alias iplocation='geoiplookup'                                  # Requires geoip-bin
 alias now='date +"%d-%m-%Y %T"'
 alias ts2local='python -c "import sys, time; print time.strftime(\"%Y-%m-%d %H:%M:%S\", time.localtime(float(sys.argv[1])/1000))"'
 alias urlencode='python -c "import sys, urllib; print urllib.quote_plus(sys.argv[1])"'
