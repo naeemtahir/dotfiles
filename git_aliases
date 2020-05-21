@@ -4,11 +4,12 @@
 #fi
 
 alias g='git'
-alias gc='git commit'
+alias gc='git commit -v'
 alias gbr='git branch'
-alias gco='git checkout '
-alias gst='git status '
-alias gadd='git add '
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gst='git status'
+alias gadd='git add'
 alias gdiff='git diff'
 alias greset='git reset'
 alias gclean='git clean -f -d -i'
