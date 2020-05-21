@@ -1,4 +1,4 @@
-# Add following lines to ~/.bashrc
+# Add following lines to ~/.bashrc or ~/.zshrc
 #if [ -f ~/.k8s_aliases ]; then
 #    . ~/.k8s_aliases
 #fi
