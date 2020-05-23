@@ -52,7 +52,7 @@ alias dcsrm='function _dcsrm() { if [ "$#" -eq 1 ]; then docker container stop $
 alias dcsrma='docker container stop $(docker container ps -a -q) && docker container rm $(docker container ps -a -q)'
 
 # List images
-alias di="docker images"
+alias dil="docker images"
 
 # Remove image
 alias dirm='docker image rm'

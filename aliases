@@ -32,7 +32,6 @@ alias mv='mv -iv'                       # Run 'mv' in interactive mode and expla
 alias wget='wget -c'                    # Continue getting a partially-downloaded file (e.g., started by a previous instance of wget)
 
 # Quick navigation
-alias dh='dirs -v | head -10'
 alias b='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -46,19 +45,6 @@ alias .7='cd ../../../../../../..'
 alias .8='cd ../../../../../../../..'
 alias .9='cd ../../../../../../../../..'
 alias .10='cd ../../../../../../../../../..'
-
-if [[ $SHELL == *zsh* ]]; then
-    alias 1='~1'
-    alias 2='~2'
-    alias 3='~3'
-    alias 4='~4'
-    alias 5='~5'
-    alias 6='~6'
-    alias 7='~7'
-    alias 8='~8'
-    alias 9='~9'
-    alias 10='~10'
-fi
 
 # Quick Search
 alias ga='alias | grep'                 # Search alias
@@ -201,11 +187,4 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias f='open -a Finder ./'  # Opens current directory in MacOS Finder - Mac
     alias o='open'               # Open file with associated program
-fi
-
-# Suffix aliases
-if [[ $SHELL == *zsh* ]]; then
-    alias -s {txt,TXT}='less'
-    alias -s {yml,yaml,md}='vi'
-    alias -s {log,LOG}='tail -f'
 fi

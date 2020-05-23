@@ -67,6 +67,9 @@ setopt CORRECT_ALL
 # allowing comments in interactive shells (useful when pasting commands)
 setopt INTERACTIVE_COMMENTS
 
+# bind Ctrl-U to kill till beginning of line (like it works in bash)
+bindkey \^U backward-kill-line
+
 #===================================
 # Any custom additions go at the end
 #===================================
