@@ -6,6 +6,7 @@
 alias g='git'
 alias gc='git commit -v'
 alias gbr='git branch'
+alias gbrc='git branch | grep \*'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gst='git status'
