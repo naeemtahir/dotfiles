@@ -159,6 +159,14 @@ alias aesdecrypt='function _aesdecrypt() { if [ "$#" -eq 1 ]; then openssl aes-2
 alias gpgcrypt='function _gpgcrypt() { if [ "$#" -eq 2 ]; then gpg -o "$1".gpg -e -r $2 "$1"; else echo "Usage: gpgcrypt <file> <key>"; fi };_gpgcrypt' # Requires GnuPG
 alias gpgdecrypt='function _gpgdecrypt() { if [ "$#" -eq 1 ]; then gpg -o "${1%.*}" -d "$1"; else echo "Usage: gpgdecrypt <file>"; fi };_gpgdecrypt' # Requires GnuPG
 
+# Rclone
+alias rcls='rclone ls'
+alias rclsd='rclone lsd'
+alias rccp='rclone copy'
+alias rcsy='rclone sync'
+alias rctree='rclone tree'
+alias rcremotes='rclone listremotes'
+
 # tmux
 alias tms='tmux new -s'
 alias tml='tmux ls'
