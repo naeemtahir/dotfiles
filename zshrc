@@ -20,12 +20,18 @@ bindkey -e
 #===================
 # Command Completion
 #===================
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
+# Case-insensitive matching, comment following line if you like default behavior (i.e., case-sensitive matching)
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
+# Completes filenames
 zstyle ':completion:*' list-suffixes
+
+# Expand paths
 zstyle ':completion:*' expand prefix suffix
 
+# Audo change directories (by typing their name without 'cd'), also push them on stack for quick navitation
 setopt autocd autopushd pushdignoredups
 
 # load bashcompinit for some old bash completions
