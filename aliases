@@ -180,6 +180,7 @@ vii='vi -i NONE'
 alias delete_conflicted='find . -name "*conflicted*" -delete'
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias diff='colordiff' 				# Requires colordiff
+    alias bcdiff='bcompare'             # Requires Beyond Compare
     alias top='htop' 					# Requires htop
     alias f='nautilus ./'               # Opens current directory in file manager
     alias o='xdg-open'                  # Open file with associated program
@@ -198,6 +199,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias update_all='sudo apt-get update && sudo apt-get upgrade'
     alias upgrade_dist='sudo apt-get update && sudo apt-get dist-upgrade'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+    alias bcdiff='open -a "Beyond Compare"'  # Requires Beyond Compare
     alias f='open -a Finder ./'  # Opens current directory in MacOS Finder - Mac
     alias o='open'               # Open file with associated program
 fi
