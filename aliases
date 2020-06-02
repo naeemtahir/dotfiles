@@ -176,7 +176,7 @@ alias tma='tmux attach -t'
 alias tmk='tmux kill-session -t'
 
 # vi
-vii='vi -i NONE'
+alias vii='vi -i NONE'
 
 # Miscelleneous
 alias delete_conflicted='find . -name "*conflicted*" -delete'
