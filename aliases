@@ -100,6 +100,7 @@ fi
 # Utilities
 alias b64encode='python -c "import sys, base64; print base64.b64encode(sys.argv[1])"'
 alias b64decode='python -c "import sys, base64; print base64.b64decode(sys.argv[1]).decode(\"utf-8\")"'
+alias calc='function _calc() { if [ "$#" -eq 1 ]; then echo "$1" | bc -l; else echo "Usage: calc \"expression\""; fi };_calc'
 alias countf='find . -maxdepth 1 -type f | wc -l'               # Count files in current dir
 alias countfn='find . -type f | wc -l'                          # Count files in current dir and its subdirectories
 alias countd='find . -maxdepth 1 -type d | wc -l'               # Count subdirectories in current dir
