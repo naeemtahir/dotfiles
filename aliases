@@ -171,6 +171,11 @@ alias aesdecrypt='function _aesdecrypt() { if [ "$#" -eq 2 ]; then openssl enc -
 alias gpgcrypt='function _gpgcrypt() { if [ "$#" -eq 2 ]; then gpg -o "$1".gpg -e -r $2 "$1"; else echo "Usage: gpgcrypt <file> <key>"; fi };_gpgcrypt' # Requires GnuPG
 alias gpgdecrypt='function _gpgdecrypt() { if [ "$#" -eq 2 ]; then gpg -o "$2" -d "$1"; else echo "Usage: gpgdecrypt <input_file> <output_file>"; fi };_gpgdecrypt' # Requires GnuPG
 
+# Start applications without Network access
+alias nn='nointernet.sh'
+alias nnkp='nointernet.sh keepassxc'
+alias nncode='nointernet.sh code'
+
 # Rclone
 alias rcls='rclone ls'
 alias rclsd='rclone lsd'
