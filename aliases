@@ -10,6 +10,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 fi
 alias l='ls -CF'                        # List only regular files and directories
 alias la='ls -CAF'                      # List almost all (indluding hidden but excluding implied ./ ../), classified by appending one of */=>@| indicator to entries)
+alias lf='ls -1'                        # List only names of regular files and directories
 alias lh='ls -ld .?*'                   # List only hidden files and directories
 alias ll='ls -alF'                      # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format
 alias lli='ls -AFli'                    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, including inode
