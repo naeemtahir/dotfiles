@@ -28,6 +28,10 @@ if [[ $DISPLAY ]]; then
     fi
 fi
 
+if [ -f ~/.bashrc_additions_private ]; then
+    . ~/.bashrc_additions_private
+fi
+
 if [ -f ~/.zsh_aliases ]; then
    . ~/.zsh_aliases
 fi
