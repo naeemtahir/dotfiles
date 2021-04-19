@@ -1,6 +1,6 @@
-# Add following lines to ~/.bashrc or ~/.zshrc
-#if [ -f ~/.git_aliases ]; then
-#    . ~/.git_aliases
+# Add following lines to $HOME/.bashrc or $HOME/.zshrc
+#if [ -f $HOME/.git_aliases ]; then
+#    . $HOME/.git_aliases
 #fi
 
 alias g='git'

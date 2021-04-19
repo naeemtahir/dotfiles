@@ -1,7 +1,7 @@
-# Add these lines to ~/.zshrc
+# Add these lines to $HOME/.zshrc
 #
-#if [ -f ~/.zsh_aliases ]; then
-#   . ~/.zsh_aliases
+#if [ -f $HOME/.zsh_aliases ]; then
+#   . $HOME/.zsh_aliases
 #fi
 
 # Quick navigation

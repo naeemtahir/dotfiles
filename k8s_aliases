@@ -1,6 +1,6 @@
-# Add following lines to ~/.bashrc or ~/.zshrc
-#if [ -f ~/.k8s_aliases ]; then
-#    . ~/.k8s_aliases
+# Add following lines to $HOME/.bashrc or $HOME/.zshrc
+#if [ -f $HOME/.k8s_aliases ]; then
+#    . $HOME/.k8s_aliases
 #fi
 
 alias k='kubectl'

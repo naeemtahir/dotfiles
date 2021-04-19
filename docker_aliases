@@ -1,6 +1,6 @@
-# Add following lines to ~/.bashrc or ~/.zshrc
-#if [ -f ~/.docker_aliases ]; then
-#    . ~/.docker_aliases
+# Add following lines to $HOME/.bashrc or $HOME/.zshrc
+#if [ -f $HOME/.docker_aliases ]; then
+#    . $HOME/.docker_aliases
 #fi
 
 alias d='docker'
