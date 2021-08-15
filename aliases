@@ -36,6 +36,9 @@ alias mkdir='mkdir -p'                  # Override 'mkdir' to make parent direct
 alias mv='mv -iv'                       # Run 'mv' in interactive mode and explain what is being done
 alias wget='wget -c'                    # Continue getting a partially-downloaded file (e.g., started by a previous instance of wget)
 
+# Shell
+alias showfunc='function _showfunc() { if [ "$#" -eq 1 ]; then declare -f "$1"; else echo "Usage: showfunc <function_name>"; fi };_showfunc'   # Display definition of given bash function
+
 # Quick navigation
 alias b='cd -'
 alias ..='cd ..'
@@ -235,7 +238,9 @@ alias vii='vi -i NONE'
 
 # Miscelleneous
 alias delete_conflicted='find . -name "*conflicted*" -delete'
-if [[ "$OSTYPE" == "linux"* ]]; then
+if [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Microsoft.* ]]; then
+    alias f='explorer.exe .'  # Opens current directory in Windows Explorer - WSL1
+elif [[ "$OSTYPE" == "linux"* ]]; then
     alias diff='colordiff'     # Requires colordiff
     alias bcdiff='bcompare'    # Requires Beyond Compare
     alias top='htop'           # Requires htop
