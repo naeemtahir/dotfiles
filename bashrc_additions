@@ -41,8 +41,8 @@ if [[ $DISPLAY ]]; then
     fi
 fi
 
-if [ -f $HOME/.bashrc_additions_private ]; then
-    . $HOME/.bashrc_additions_private
+if [ -f $HOME/.env ]; then
+    . $HOME/.env
 fi
 
 if [ -f $HOME/.aliases ]; then
