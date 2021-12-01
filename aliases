@@ -89,6 +89,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias pscpu10='ps auxf | sort -nr -k 3 | head -10'              # List top 10 processes by CPU usage
     alias psmem='ps auxf | sort -nr -k 4'                           # List top processes by memory usage
     alias psmem10='ps auxf | sort -nr -k 4 | head -10'              # List top 10 processes by memory usage
+    alias dir10='du -a . | sort -n -r | head -n 10'                 # List top 10 directories by size
+    alias files10='find  -type f  -exec  du -Sh {} +  |  sort -rh  |  head -n 10'        # List top 10 files by size
     alias wifichannels='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | sort -n'      # List wifi channels of networks in range
     alias wifichannels_mine='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | sort -r -n -k3 | grep "iot\|ari\|sag\|lib\|cen\|bai"'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -107,6 +109,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias pscpu10='ps aux | sort -nr -k 3 | head -10'               # List top 10 processes by CPU usage
     alias psmem='ps aux | sort -nr -k 4'                            # List top processes by memory usage
     alias psmem10='ps aux | sort -nr -k 4 | head -10'               # List top 10 processes by memory usage
+    alias dir10='du -a . | sort -n -r | head -n 10'                 # List top 10 directories by size
+    alias files10='find  -type f  -exec  du -Sh {} +  |  sort -rh  |  head -n 10'      # List top 10 files by size
 fi
 
 # Utilities
