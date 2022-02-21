@@ -133,7 +133,7 @@ alias countd='find . -maxdepth 1 -type d | wc -l'               # Count subdirec
 alias countdn='find . -type d | wc -l'                          # Count subdirectories in current dir and its subdirectories
 alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
-alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
+alias genpasswd="cat /dev/urandom | tr -cd '[:graph:]' | head -c 12"
 alias ipof='dig +short'
 alias iplocation='geoiplookup'                                  # Requires geoip-bin
 alias now='date +"%d-%m-%Y %T"'
@@ -144,7 +144,7 @@ alias urldecode2='python2 -c "import sys, urllib; s=urllib.unquote_plus(sys.argv
 alias vcmount='veracrypt -t --mount'
 alias vcunmount='veracrypt -t --dismount'
 if [[ "$OSTYPE" == "linux"* ]]; then
-    alias pbcopy='xsel --clipboard --input'                         # Requires xsel
+    alias pbcopy='xsel --clipboard --input'                     # Requires xsel
     alias pbpaste='xsel --clipboard --output'
 fi
 
