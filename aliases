@@ -165,7 +165,7 @@ alias pdf2txt='pdftotext'                                                   # Re
 alias pdfsplit='function _pdfsplit() { if [ "$#" -eq 2 ]; then qpdf --split-pages "$1" "$2"; else echo "Usage: pdfsplit <input.pdf> <output.pdf>"; fi };_pdfsplit' # Requires qpdf
 alias pdfjoin='function _pdfjoin() { if [ "$#" -eq 2 ]; then qpdf --empty "$2" --pages "$1"-*.pdf --; else echo "Usage: pdfjoin <input.pdf, e.g., splitname without number> <output.pdf>, OR USE MORE SOPHISTICATED 'pdfunite' UTILITY"; fi };_pdfjoin' # Requires qpdf
 
-alias docx2pdf='function _docx2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -s -o "$1".pdf; else echo "Usage: docx2pdf <docx>"; fi };_docx2pdf' # Requires pandoc
+alias docx2pdf='function _docx2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -s --pdf-engine=context -o "$1".pdf; else echo "Usage: docx2pdf <docx>"; fi };_docx2pdf' # Requires pandoc
 alias docx2odt='function _docx2odt() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t odt -s -o "$1".odt; else echo "Usage: docx2odt <docx>"; fi };_docx2odt' # Requires pandoc
 alias docx2html='function _docx2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t html -s -o "$1".html; else echo "Usage: docx2html <docx>"; fi };_docx2html' # Requires pandoc
 alias docx2md='function _docx2md() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t markdown -s -o "$1".md; else echo "Usage: docx2md <docx>"; fi };_docx2md' # Requires pandoc
@@ -179,7 +179,7 @@ alias docx2epub='function _docx2epub() { if [ "$#" -eq 1 ]; then pandoc "$1" -f 
 #alias doc2epub=
 
 alias md2html='function _md2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t html -s -o "$1".html; else echo "Usage: md2html <markdown file>"; fi };_md2html' # Requires pandoc
-alias md2pdf='function _md2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -s -o "$1".pdf; else echo "Usage: md2pdf <markdown file>"; fi };_md2pdf' # Requires pandoc
+alias md2pdf='function _md2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -s --pdf-engine=context -o "$1".pdf; else echo "Usage: md2pdf <markdown file>"; fi };_md2pdf' # Requires pandoc
 alias md2docx='function _md2docx() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t docx -s -o "$1".docx; else echo "Usage: md2docx <markdown file>"; fi };_md2docx' # Requires pandoc
 alias md2odt='function _md2odt() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t odt -s -o "$1".odt; else echo "Usage: md2odt <markdown file>"; fi };_md2odt' # Requires pandoc
 
