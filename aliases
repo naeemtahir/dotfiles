@@ -149,10 +149,12 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 fi
 
 # Pretty Print JSON/XML
-alias jsonf='python2 -mjson.tool'
-alias jsonfb='pbpaste | python2 -mjson.tool'
-alias xmlf='xmllint --format -'                                 # Requires libxml2-utils
-alias xmlfb='pbpaste | xmllint --format -'
+alias jsonf='function _jsonf() { if [ "$#" -eq 1 ]; then python2 -mjson.tool "$1"; else pbpaste | python2 -mjson.tool; fi };_jsonf'
+alias xmlf='function _xmlf() { if [ "$#" -eq 1 ]; then xmllint --format "$1"; else pbpaste | xmllint --format -; fi };_xmlf'   # Requires libxml2-utils
+
+# Convert text case
+alias 2upper='function _2upper() { if [ "$#" -ge 1 ]; then echo $@ | tr "[:lower:]" "[:upper:]"; else pbpaste | tr "[:lower:]" "[:upper:]"; fi };_2upper'
+alias 2lower='function _2lower() { if [ "$#" -ge 1 ]; then echo $@ | tr "[:upper:]" "[:lower:]"; else pbpaste | tr "[:upper:]" "[:lower:]"; fi };_2lower'
 
 # Image/Document Format conversion
 alias 2ico='function _2ico() { if [ "$#" -eq 1 ]; then convert "$1" -define icon:auto-resize=128,64,48,32,16 "$1".ico; else echo "Usage: 2ico <image file>"; fi };_2ico' # Requires ImageMagick
@@ -182,6 +184,10 @@ alias md2html='function _md2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f mark
 alias md2pdf='function _md2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -s --pdf-engine=context -o "$1".pdf; else echo "Usage: md2pdf <markdown file>"; fi };_md2pdf' # Requires pandoc
 alias md2docx='function _md2docx() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t docx -s -o "$1".docx; else echo "Usage: md2docx <markdown file>"; fi };_md2docx' # Requires pandoc
 alias md2odt='function _md2odt() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t odt -s -o "$1".odt; else echo "Usage: md2odt <markdown file>"; fi };_md2odt' # Requires pandoc
+
+alias html2md='function _html2md() { if [ "$#" -eq 1 ]; then pandoc "$1" -f html -t markdown -s -o "$1".md; else echo "Usage: html2md <html file>"; fi };_html2md' # Requires pandoc
+alias html2pdf='function _html2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f html -s --pdf-engine=context -o "$1".pdf; else echo "Usage: html2pdf <html file>"; fi };_html2pdf' # Requires pandoc
+alias html2docx='function _html2doc() { if [ "$#" -eq 1 ]; then pandoc "$1" -f html -t docx -s -o "$1".docx; else echo "Usage: html2doc <html file>"; fi };_html2doc' # Requires pandoc
 
 # Photo Management
 alias display_all='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) -exec display "{}" \;'
@@ -249,7 +255,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
     alias diff='colordiff'     # Requires colordiff
     alias bcdiff='bcompare'    # Requires Beyond Compare
     alias top='htop'           # Requires htop
-    alias f='nautilus ./'      # Opens current directory in file manager
+    alias f='nautilus ./ > /dev/null &'    # Opens current directory in file manager
     alias o='xdg-open'         # Open file with associated program
     alias refresh_menu='touch $HOME/.local/share/applications/a && rm $HOME/.local/share/applications/a'
 
