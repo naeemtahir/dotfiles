@@ -157,6 +157,7 @@ alias 2upper='function _2upper() { if [ "$#" -ge 1 ]; then echo $@ | tr "[:lower
 alias 2lower='function _2lower() { if [ "$#" -ge 1 ]; then echo $@ | tr "[:upper:]" "[:lower:]"; else pbpaste | tr "[:upper:]" "[:lower:]"; fi };_2lower'
 
 # Image/Document Format conversion
+alias 2grayscale='function _2grayscale() { if [ "$#" -eq 1 ]; then convert "$1" -colorspace gray "$1".bw; else echo "Usage: 2grayscale <image file>"; fi };_2grayscale' # Requires ImageMagick
 alias 2ico='function _2ico() { if [ "$#" -eq 1 ]; then convert "$1" -define icon:auto-resize=128,64,48,32,16 "$1".ico; else echo "Usage: 2ico <image file>"; fi };_2ico' # Requires ImageMagick
 alias 2jpg='function _2jpg() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".jpg; else echo "Usage: 2jpg <image/document file; pdf/doc/docx etc.>"; fi };_2jpg' # Requires ImageMagick
 alias 2png='function _2png() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 -alpha off "$1".png; else echo "Usage: 2png <image/document file; pdf/doc/docx etc.>"; fi };_2png' # Requires ImageMagick
