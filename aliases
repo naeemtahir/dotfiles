@@ -78,9 +78,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias cpuinfo='lscpu'                                           # Display CPU info
     alias deviceinfo='lspci'                                        # Display devices
     alias diskspace='function _diskspace() { if [ "$#" -eq 1 ]; then df -h "$1"; else echo "Usage: diskspace <mount point, e.g., / or ~/mnt/k>"; fi };_diskspace'   # Display disk usage
-    alias distinfo='lsb_release -sd'                                # Display distribution info
+    alias distinfo='lsb_release -a'                                # Display distribution info
     alias meminfo='free -m -l -t'                                   # Display memory usage
-    alias osinfo='lsb_release -sd'                                  # Display OS info
+    alias osinfo='lsb_release -a'                                  # Display OS info
     alias usbinfo='lsusb'                                           # Display USB devices
     alias activeports='netstat -tulanp'                             # List active ports
     alias myip='ip addr | sed -En "s/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p"; curl http://ipecho.net/plain; echo;'             # Display IPs
@@ -209,8 +209,8 @@ alias remove_audio='function _remove_audio() { if [ "$#" -eq 1 ]; then ffmpeg -i
 #       sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
 #       sudo chmod a+rx /usr/local/bin/youtube-dl
 # Checkout: https://askubuntu.com/questions/486297/how-to-select-video-quality-from-youtube-dl
-alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then youtube-dl -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
-alias video-dl="function _video-dl { if [ "$#" -eq 1 ]; then youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo 'Usage: video-dl <video-url>'; fi };_video-dl"
+alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then python3 $(which youtube-dl) -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
+alias video-dl="function _video-dl { if [ "$#" -eq 1 ]; then python3 $(which youtube-dl) -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo 'Usage: video-dl <video-url>'; fi };_video-dl"
 
 # Encryption/Decryption
 alias aescrypt='function _aescrypt() { if [ "$#" -eq 1 ]; then openssl enc -e -aes-256-cbc -pbkdf2 -salt -in "$1" -out "$1".enc; else echo "Usage: aescrypt <file>"; fi };_aescrypt' # Requires OpenSSL
