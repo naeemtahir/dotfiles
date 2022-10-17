@@ -47,6 +47,9 @@ set incsearch
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 
+" Auto-read file that has been been changed outside of Vim
+set autoread
+
 " Enable mouse support. You should avoid relying on this too much, but it
 " can sometimes be convenient.
 " set mouse+=a
