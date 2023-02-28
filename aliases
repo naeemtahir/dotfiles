@@ -210,8 +210,11 @@ alias 2relpath_playlist='function _2relpath_playlist() { if [ "$#" -eq 1 ]; then
 #       sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
 #       sudo chmod a+rx /usr/local/bin/youtube-dl
 # Checkout: https://askubuntu.com/questions/486297/how-to-select-video-quality-from-youtube-dl
-alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then python3 $(which youtube-dl) -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
-alias video-dl='function _video-dl { if [ "$#" -eq 1 ]; then python3 $(which youtube-dl)  --merge-output-format mp4 $1; else echo "Usage: video-dl <video-url>"; fi };_video-dl'
+# alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then python3 $(which youtube-dl) -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
+# alias video-dl='function _video-dl { if [ "$#" -eq 1 ]; then python3 $(which youtube-dl) --merge-output-format mp4 $1; else echo "Usage: video-dl <video-url>"; fi };_video-dl'
+# Requires: yt-dlp (it is an active fork of youtube-dl)
+alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then yt-dlp -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
+alias video-dl='function _video-dl { if [ "$#" -eq 1 ]; then yt-dlp --merge-output-format mp4 $1; else echo "Usage: video-dl <video-url>"; fi };_video-dl'
 
 # Encryption/Decryption
 alias aescrypt='function _aescrypt() { if [ "$#" -eq 1 ]; then openssl enc -e -aes-256-cbc -pbkdf2 -salt -in "$1" -out "$1".enc; else echo "Usage: aescrypt <file>"; fi };_aescrypt' # Requires OpenSSL
