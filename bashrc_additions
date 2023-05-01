@@ -77,4 +77,7 @@ if [ -f $HOME/.k8s_aliases ]; then
 fi
 
 # kubectl autocomplete
-source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
+	source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+fi
+
