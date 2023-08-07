@@ -6,9 +6,9 @@
 export PATH=$PATH:$HOME/bin
 export PDSH_RCMD_TYPE=ssh
 if [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Microsoft.* ]]; then
-    export K=/mnt/k
+    export K=$HOME/mnt/k
 elif [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*WSL2.* ]]; then
-    export K=/mnt/k
+    export K=$HOME/mnt/k
 elif [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
     export K=$HOME/mnt/k
     source $K/MySettings/DevEnv/setenv_lin.sh
@@ -79,4 +79,7 @@ fi
 if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
 	source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 fi
+
+# Display TODOs
+todo
 
