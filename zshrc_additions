@@ -77,9 +77,10 @@ fi
 
 # kubectl autocomplete
 if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
-	source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
+    if command -v kubectl &> /dev/null; then
+        source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
+    fi
 fi
 
 # Display TODOs
 todo
-

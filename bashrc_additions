@@ -78,9 +78,10 @@ fi
 
 # kubectl autocomplete
 if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
-	source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+    if command -v kubectl &> /dev/null; then
+        source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+    fi
 fi
 
 # Display TODOs
 todo
-
