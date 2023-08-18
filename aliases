@@ -165,6 +165,7 @@ alias img2pdf='function _img2pdf() { if [ "$#" -eq 1 ]; then convert -density 30
 
 alias pdf2html='pdftohtml'                                                  # Requires poppler-utils
 alias pdf2txt='pdftotext'                                                   # Requires poppler-utils
+alias pdf2doc='function _pdf2doc() { if [ "$#" -eq 1 ]; then abiword --to=doc "$1"; else echo "Usage: pdf2doc <docx>"; fi };_pdf2doc'  # Requires abiword
 alias pdfsplit='function _pdfsplit() { if [ "$#" -eq 2 ]; then qpdf --split-pages "$1" "$2"; else echo "Usage: pdfsplit <input.pdf> <output.pdf>"; fi };_pdfsplit' # Requires qpdf
 alias pdfjoin='function _pdfjoin() { if [ "$#" -eq 2 ]; then qpdf --empty "$2" --pages "$1"-*.pdf --; else echo "Usage: pdfjoin <input.pdf, e.g., splitname without number> <output.pdf>, OR USE MORE SOPHISTICATED 'pdfunite' UTILITY"; fi };_pdfjoin' # Requires qpdf
 
