@@ -1,8 +1,8 @@
 #!/bin/bash
 
-script_name=`basename "$0"`
+script_name=$(basename "$0")
 
-for f in `ls`; do
+for f in $(ls); do
    rm $HOME/.$f
    ln -s $PWD/$f $HOME/.$f
 done
