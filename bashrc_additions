@@ -8,24 +8,6 @@ shopt -s direxpand
 # Enable vi style command line editing
 #set -o vi
 
-export PATH=$PATH:$HOME/bin
-export PDSH_RCMD_TYPE=ssh
-if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Microsoft.* ]] || [[ $(uname -a) =~ .*WSL2.* ]]); then
-    export K=/media/k
-    export DROPBOX=$K/Dropbox
-elif [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
-    export K=/media/k
-    export DROPBOX=$HOME/Dropbox
-    source $K/MySettings/DevEnv/setenv_lin.sh
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    export K=$HOME/k
-    export DROPBOX=$HOME/Dropbox
-    source $K/MySettings/DevEnv/setenv_mac.sh
-fi
-
-export MYWIKI=$K/MyWiki
-export TODO=$DROPBOX/TODO.txt
-
 # To configure your terminal to automatically start tmux as default, add the following lines to your
 # $HOME/.bashrc file, just above your aliases section.
 #
@@ -57,14 +39,6 @@ if [ -f $HOME/.functions ]; then
     . $HOME/.functions
 fi
 
-if [ -f $HOME/.destination_aliases ]; then
-    . $HOME/.destination_aliases
-fi
-
-if [ -f $HOME/.mount_aliases ]; then
-    . $HOME/.mount_aliases
-fi
-
 if [ -f $HOME/.git_aliases ]; then
     . $HOME/.git_aliases
 fi
@@ -77,13 +51,7 @@ if [ -f $HOME/.k8s_aliases ]; then
     . $HOME/.k8s_aliases
 fi
 
-# Any system specific overrides goes in this file (e.g., different TODO or MYWIKI path for work computer, or disable displaying of TODOs on Android/Termux)
+# Any system specific overrides and additions goes here (e.g., different TODO or MYWIKI path for work computer, or disable displaying of TODOs on Android/Termux)
 if [ -f $HOME/.overrides_and_additions ]; then
     . $HOME/.overrides_and_additions
-fi
-# kubectl autocomplete
-if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
-    if command -v kubectl &> /dev/null; then
-        source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
-    fi
 fi
