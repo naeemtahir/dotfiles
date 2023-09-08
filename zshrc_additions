@@ -50,7 +50,7 @@ if [ -f $HOME/.k8s_aliases ]; then
     . $HOME/.k8s_aliases
 fi
 
-# Any system specific overrides and additions goes here (e.g., different TODO or MYWIKI path for work computer, or disable displaying of TODOs on Android/Termux)
+# Any system specific overrides and additions goes here
 if [ -f $HOME/.overrides_and_additions ]; then
     . $HOME/.overrides_and_additions
 fi
