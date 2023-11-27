@@ -198,7 +198,7 @@ alias display_fit='display -resize 1024x1024'
 alias photoframe='function _photoframe(){ if [ "$#" -eq 1 ]; then photocopy.sh $1 _frame -y; else echo "Usage: photoframe <output dir>"; fi };_photoframe'
 alias photoprint='function _photoprint(){ if [ "$#" -eq 1 ]; then photocopy.sh $1 _print -n; else echo "Usage: photoprint <output dir>"; fi };_photoprint'
 alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -size "$1" plasma:fractal $2; else echo "Usage: random_image <size, e.g., 1024x768> <image file>"; fi };_random_image'
-alias normalize_jpeg_ext='rename "s/(.jpeg|.JPG)/.jpg/" *.*'  # Requires rename
+alias jpegJPG2jpg='rename "s/(.jpeg|.JPG)/.jpg/" *.*'  # Requires rename
 
 # Audio/Video Management
 alias vid2mp3='function _vid2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: vid2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_vid2mp3'   # Requires ffmpeg
