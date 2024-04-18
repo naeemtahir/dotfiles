@@ -152,6 +152,11 @@ alias 2jpg='function _2jpg() { if [ "$#" -eq 1 ]; then convert -density 300 "$1"
 alias 2png='function _2png() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 -alpha off "$1".png; else echo "Usage: 2png <image/document file; pdf/doc/docx etc.>"; fi };_2png' # Requires ImageMagick
 alias img2pdf='function _img2pdf() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".pdf; else echo "Usage: img2pdf <image>"; fi };_img2pdf' # Requires ImageMagick
 
+alias pdf2html='pdftohtml'                                                  # Requires poppler-utils
+alias pdf2txt='pdftotext'                                                   # Requires poppler-utils
+alias pdfsplit='function _pdfsplit() { if [ "$#" -eq 2 ]; then qpdf --split-pages "$1" "$2"; else echo "Usage: pdfsplit <input.pdf> <output.pdf>"; fi };_pdfsplit' # Requires qpdf
+alias pdfjoin='function _pdfjoin() { if [ "$#" -eq 2 ]; then qpdf --empty "$2" --pages "$1"-*.pdf --; else echo "Usage: pdfjoin <input.pdf, e.g., splitname without number> <output.pdf>, OR USE MORE SOPHISTICATED 'pdfunite' UTILITY"; fi };_pdfjoin' # Requires qpdf
+
 alias docx2pdf='function _docx2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -s -o "$1".pdf; else echo "Usage: docx2pdf <docx>"; fi };_docx2pdf' # Requires pandoc
 alias docx2odt='function _docx2odt() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t odt -s -o "$1".odt; else echo "Usage: docx2odt <docx>"; fi };_docx2odt' # Requires pandoc
 alias docx2html='function _docx2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t html -s -o "$1".html; else echo "Usage: docx2html <docx>"; fi };_docx2html' # Requires pandoc
