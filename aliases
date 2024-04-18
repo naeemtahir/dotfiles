@@ -201,8 +201,9 @@ alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -s
 # Audio/Video Management
 alias vid2mp3='function _vid2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: vid2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_vid2mp3'   # Requires ffmpeg
 alias vid2mp4='function _vid2mp4() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" "$1".mp4; else echo "Usage: vid2mp4 <video>"; fi };_vid2mp4'   # Requires ffmpeg
-
 alias remove_audio='function _remove_audio() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" -map 0:0 -acodec copy -vcodec copy "$1".mp4; else echo "Usage: remove_audio <mp4 file>"; fi };_remove_audio' # Requires Ffmpeg (https://unix.stackexchange.com/questions/6402/how-to-remove-an-audio-track-from-an-mp4-video-file)
+# Change absolute paths to relative paths in Music playlists. Supports M3U, PLS, XSPF playlists.
+alias 2relpath_playlist='function _2relpath_playlist() { if [ "$#" -eq 1 ]; then sed -i "s/file:\/\///g;s/\/home\/naeem\/Music\/MyMusic\///g" "$1"; else echo "Usage: 2relpath_playlist <playlist.[m3u|.pls|.xspf]>"; fi };_2relpath_playlist'
 # Audio/Video download.
 # Requires: youtube-dl
 # Note for Windows Subsystem for Linux: Don't install 'youtube-dl' with apt-get it doesn't work properly. Use following command sequence instead:
