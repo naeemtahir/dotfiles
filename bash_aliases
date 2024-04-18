@@ -149,8 +149,8 @@ alias photoprint='function _photoprint(){ if [ "$#" -eq 1 ]; then photocopy.sh $
 alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -size "$1" plasma:fractal $2; else echo "Usage: random_image <size, e.g., 1024x768> <image file>"; fi };_random_image'
 
 # Encryption/Decryption
-alias aescrypt='function _aescrypt() { if [ "$#" -eq 1 ]; then gpg -c --cipher-algo AES256 --compress-algo zip -o "$1".enc "$1"; else echo "Usage: aescrypt <file>"; fi };_aescrypt' # Requires GnuPG
-alias aesdecrypt='function _aesdecrypt() { if [ "$#" -eq 1 ]; then gpg -o "${1%.*}" -d "$1"; else echo "Usage: aesdecrypt <file>"; fi };_aesdecrypt' # Requires GnuPG
+alias aescrypt='function _aescrypt() { if [ "$#" -eq 1 ]; then openssl aes-256-cbc -pbkdf2 -in "$1" -out "$1".enc; else echo "Usage: aescrypt <file>"; fi };_aescrypt' # Requires OpenSSL
+alias aesdecrypt='function _aesdecrypt() { if [ "$#" -eq 1 ]; then openssl aes-256-cbc -d -pbkdf2 -in "$1" -out "${1%.*}"; else echo "Usage: aesdecrypt <file>"; fi };_aesdecrypt' # Requires OpenSSL
 alias gpgcrypt='function _gpgcrypt() { if [ "$#" -eq 2 ]; then gpg -o "$1".gpg -e -r $2 "$1"; else echo "Usage: gpgcrypt <file> <key>"; fi };_gpgcrypt' # Requires GnuPG
 alias gpgdecrypt='function _gpgdecrypt() { if [ "$#" -eq 1 ]; then gpg -o "${1%.*}" -d "$1"; else echo "Usage: gpgdecrypt <file>"; fi };_gpgdecrypt' # Requires GnuPG
 
