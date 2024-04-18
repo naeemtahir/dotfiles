@@ -77,17 +77,13 @@ if [ -f $HOME/.k8s_aliases ]; then
     . $HOME/.k8s_aliases
 fi
 
-# System specific overrides (e.g., different TODO or MYWIKI path for work computer)
-if [ -f $HOME/.overrides ]; then
-    . $HOME/.overrides
+# System specific overrides (e.g., different TODO or MYWIKI path for work computer, or disable displaying of TODOs on Android/Termux)
+if [ -f $HOME/.overrides_and_additions ]; then
+    . $HOME/.overrides_and_additions
 fi
-
 # kubectl autocomplete
 if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
     if command -v kubectl &> /dev/null; then
         source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
     fi
 fi
-
-# Display TODOs
-todo
