@@ -1,7 +1,7 @@
 # Add these lines to $HOME/.bashrc  or $HOME/.zshrc
 #
-#if [ -f $HOME/.bash_aliases ]; then
-#   . $HOME/.bash_aliases
+#if [ -f $HOME/.aliases ]; then
+#   . $HOME/.aliases
 #fi
 
 # Enhance common commands

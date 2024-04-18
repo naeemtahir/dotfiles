@@ -1,7 +1,7 @@
 # Add these lines to $HOME/.bashrc or $HOME/.zshrc
 #
-#if [ -f $HOME/.bash_functions ]; then
-#    . $HOME/.bash_functions
+#if [ -f $HOME/.functions ]; then
+#    . $HOME/.functions
 #fi
 
 RED='\033[0;31m'
