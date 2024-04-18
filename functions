@@ -34,7 +34,7 @@ bak() {
 # Verify MD5 Hash
 md5check() {
     if [ "$#" -eq 2 ] && [ -f "$1" ]; then
-        hash=`md5sum $1 | sed 's/ .*//'`;
+        hash=$(md5sum $1 | sed 's/ .*//');
 
         if [[ "$hash" == "$2" ]]; then
             printf "${GREEN}Valid Hash${NO_COLOR}"
@@ -50,7 +50,7 @@ md5check() {
 # Verify SHA1 Hash
 sha1check() {
     if [ "$#" -eq 2 ] && [ -f "$1" ]; then
-        hash=`sha1sum $1 | sed 's/ .*//'`;
+        hash=$(sha1sum $1 | sed 's/ .*//');
 
         if [[ "$hash" == "$2" ]]; then
             printf "${GREEN}Valid Hash${NO_COLOR}"
@@ -66,7 +66,7 @@ sha1check() {
 # Verify SHA256 Hash
 sha256check() {
     if [ "$#" -eq 2 ] && [ -f "$1" ]; then
-        hash=`sha256sum $1 | sed 's/ .*//'`;
+        hash=$(sha256sum $1 | sed 's/ .*//');
 
         if [[ "$hash" == "$2" ]]; then
             printf "${GREEN}Valid Hash${NO_COLOR}"
@@ -82,7 +82,7 @@ sha256check() {
 # Verify SHA512 Hash
 sha512check() {
     if [ "$#" -eq 2 ] && [ -f "$1" ]; then
-        hash=`sha512sum $1 | sed 's/ .*//'`;
+        hash=$(sha512sum $1 | sed 's/ .*//');
 
         if [[ "$hash" == "$2" ]]; then
             printf "${GREEN}Valid Hash${NO_COLOR}"
