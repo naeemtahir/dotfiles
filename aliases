@@ -251,6 +251,8 @@ alias vii='vi -i NONE'
 
 # Miscelleneous
 alias delete_conflicted='find . -name "*conflicted*" -delete'
+alias favicon='function _favicon() { if [ "$#" -eq 1 ]; then curl -L -o "$1.ico" "https://$1/favicon.ico"; else echo "Usage: favicon <domain>"; fi };_favicon'
+
 if [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Microsoft.* ]]; then
     alias f='explorer.exe .'  # Opens current directory in Windows Explorer - WSL1
 elif [[ "$OSTYPE" == "linux"* ]]; then
