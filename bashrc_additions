@@ -32,6 +32,10 @@ if [[ $DISPLAY ]]; then
     fi
 fi
 
+if [ -f ~/.bashrc_additions_private ]; then
+    . ~/.bashrc_additions_private
+fi
+
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
