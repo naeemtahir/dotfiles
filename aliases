@@ -140,31 +140,35 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias pbpaste='xsel --clipboard --output'
 fi
 
-# Formatting 
+# Pretty Print JSON/XML
 alias jsonf='python -mjson.tool'
 alias jsonfb='pbpaste | python -mjson.tool'
 alias xmlf='xmllint --format -'                                 # Requires libxml2-utils
 alias xmlfb='pbpaste | xmllint --format -'
 
-# Audio/Video download.
-# Requires: youtube-dl
-# Note for Windows Subsystem for Linux: Don't install 'youtube-dl' with apt-get it doesn't work properly. Use following command sequence instead:
-#       sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
-#       sudo chmod a+rx /usr/local/bin/youtube-dl
-# Checkout: https://askubuntu.com/questions/486297/how-to-select-video-quality-from-youtube-dl
-alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then youtube-dl -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
-alias video-dl="function _video-dl { if [ "$#" -eq 1 ]; then youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo 'Usage: video-dl <video-url>'; fi };_video-dl"
-
-# Format conversion
-alias vid2mp3='function _2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: 2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_2mp3'   # Requires ffmpeg
+# Image/Document Format conversion
 alias 2ico='function _2ico() { if [ "$#" -eq 1 ]; then convert "$1" -define icon:auto-resize=128,64,48,32,16 "$1".ico; else echo "Usage: 2ico <image file>"; fi };_2ico' # Requires ImageMagick
-alias 2jpg='function _2jpg() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".jpg; else echo "Usage: 2jpg <image/document file>"; fi };_2jpg' # Requires ImageMagick
-alias 2pdf='function _2pdf() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".pdf; else echo "Usage: 2pdf <image file>"; fi };_2pdf' # Requires ImageMagick
-alias 2png='function _2png() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 -alpha off "$1".png; else echo "Usage: 2png <image/document file>"; fi };_2png' # Requires ImageMagick
-alias remove_audio='function _remove_audio() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" -map 0:0 -acodec copy -vcodec copy "$1".mp4; else echo "Usage: remove_audio <mp4 file>"; fi };_remove_audio' # Requires Ffmpeg (https://unix.stackexchange.com/questions/6402/how-to-remove-an-audio-track-from-an-mp4-video-file)
-alias md2html='function _md2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t html -s -o "$1".html; else echo "Usage: md2html <markdown file>"; fi };_md2html' # Requires pandoc 
-alias md2pdf='function _md2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -s -o "$1".pdf; else echo "Usage: md2pdf <markdown file>"; fi };_md2pdf' # Requires pandoc 
-alias md2docx='function _md2docx() { if [ "$#" -eq 1 ]; then pandoc -s "$1" -o "$1".docx; else echo "Usage: md2docx <markdown file>"; fi };_md2docx' # Requires pandoc 
+alias 2jpg='function _2jpg() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".jpg; else echo "Usage: 2jpg <image/document file; pdf/doc/docx etc.>"; fi };_2jpg' # Requires ImageMagick
+alias 2png='function _2png() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 -alpha off "$1".png; else echo "Usage: 2png <image/document file; pdf/doc/docx etc.>"; fi };_2png' # Requires ImageMagick
+alias img2pdf='function _img2pdf() { if [ "$#" -eq 1 ]; then convert -density 300 "$1" -quality 100 "$1".pdf; else echo "Usage: img2pdf <image>"; fi };_img2pdf' # Requires ImageMagick
+
+alias docx2pdf='function _docx2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -s -o "$1".pdf; else echo "Usage: docx2pdf <docx>"; fi };_docx2pdf' # Requires pandoc
+alias docx2odt='function _docx2odt() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t odt -s -o "$1".odt; else echo "Usage: docx2odt <docx>"; fi };_docx2odt' # Requires pandoc
+alias docx2html='function _docx2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t html -s -o "$1".html; else echo "Usage: docx2html <docx>"; fi };_docx2html' # Requires pandoc
+alias docx2md='function _docx2md() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t markdown -s -o "$1".md; else echo "Usage: docx2md <docx>"; fi };_docx2md' # Requires pandoc
+alias docx2epub='function _docx2epub() { if [ "$#" -eq 1 ]; then pandoc "$1" -f docx -t epub -s -o "$1".epub; else echo "Usage: docx2epub <docx>"; fi };_docx2epub' # Requires pandoc
+
+# No need for 'odt2xxx' aliases, they already exist as commands
+#alias odt2docx=
+#alias odt2pdf=
+#alias odt2html=
+#alias odt2md=
+#alias doc2epub=
+
+alias md2html='function _md2html() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t html -s -o "$1".html; else echo "Usage: md2html <markdown file>"; fi };_md2html' # Requires pandoc
+alias md2pdf='function _md2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -s -o "$1".pdf; else echo "Usage: md2pdf <markdown file>"; fi };_md2pdf' # Requires pandoc
+alias md2docx='function _md2docx() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t docx -s -o "$1".docx; else echo "Usage: md2docx <markdown file>"; fi };_md2docx' # Requires pandoc
+alias md2odt='function _md2odt() { if [ "$#" -eq 1 ]; then pandoc "$1" -f markdown -t odt -s -o "$1".odt; else echo "Usage: md2odt <markdown file>"; fi };_md2odt' # Requires pandoc
 
 # Photo Management
 alias display_all='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) -exec display "{}" \;'
@@ -173,6 +177,20 @@ alias display_fit='display -resize 1024x1024'
 alias photoframe='function _photoframe(){ if [ "$#" -eq 1 ]; then photocopy.sh $1 _frame -y; else echo "Usage: photoframe <output dir>"; fi };_photoframe'
 alias photoprint='function _photoprint(){ if [ "$#" -eq 1 ]; then photocopy.sh $1 _print -n; else echo "Usage: photoprint <output dir>"; fi };_photoprint'
 alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -size "$1" plasma:fractal $2; else echo "Usage: random_image <size, e.g., 1024x768> <image file>"; fi };_random_image'
+
+# Audio/Video Management
+alias vid2mp3='function _vid2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: vid2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_vid2mp3'   # Requires ffmpeg
+alias vid2mp4='function _vid2mp4() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" "$1".mp4; else echo "Usage: vid2mp4 <video>"; fi };_vid2mp4'   # Requires ffmpeg
+
+alias remove_audio='function _remove_audio() { if [ "$#" -eq 1 ]; then ffmpeg -i "$1" -map 0:0 -acodec copy -vcodec copy "$1".mp4; else echo "Usage: remove_audio <mp4 file>"; fi };_remove_audio' # Requires Ffmpeg (https://unix.stackexchange.com/questions/6402/how-to-remove-an-audio-track-from-an-mp4-video-file)
+# Audio/Video download.
+# Requires: youtube-dl
+# Note for Windows Subsystem for Linux: Don't install 'youtube-dl' with apt-get it doesn't work properly. Use following command sequence instead:
+#       sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
+#       sudo chmod a+rx /usr/local/bin/youtube-dl
+# Checkout: https://askubuntu.com/questions/486297/how-to-select-video-quality-from-youtube-dl
+alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then youtube-dl -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
+alias video-dl="function _video-dl { if [ "$#" -eq 1 ]; then youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo 'Usage: video-dl <video-url>'; fi };_video-dl"
 
 # Encryption/Decryption
 alias aescrypt='function _aescrypt() { if [ "$#" -eq 1 ]; then openssl enc -e -aes-256-cbc -pbkdf2 -salt -in "$1" -out "$1".enc; else echo "Usage: aescrypt <file>"; fi };_aescrypt' # Requires OpenSSL
@@ -194,12 +212,12 @@ alias rgfc='function _rgfc() { if [ "$#" -ge 2 ]; then rg -s "$1" "${@:2}"; else
 alias rgxc='function _rgxc() { if [ "$#" -eq 2 ]; then rg -s -t$1 "$2"; else echo "Usage: rgxc <file_type> <regex>"; fi };_rgxc' # Search in given file type (case sensitive)
 
 # Rclone
+alias rclsremotes='rclone listremotes'
 alias rcls='rclone ls'
 alias rclsd='rclone lsd'
 alias rccp='rclone copy'
 alias rcsy='rclone sync'
 alias rctree='rclone tree'
-alias rcremotes='rclone listremotes'
 
 # tmux
 alias tms='tmux new -s'
