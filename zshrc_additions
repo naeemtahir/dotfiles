@@ -3,6 +3,8 @@
 #    . $HOME/.zshrc_additions
 #fi
 
+export PATH=$PATH:$HOME/.local/bin
+
 # To configure your terminal to automatically start tmux as default, add the following lines to your
 # $HOME/.zshrc file, just above your aliases section.
 #

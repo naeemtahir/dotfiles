@@ -3,6 +3,8 @@
 #    . $HOME/.bashrc_additions
 #fi
 
+export PATH=$PATH:$HOME/.local/bin
+
 export HISTCONTROL=ignoreboth:erasedups
 shopt -s direxpand
 # Enable vi style command line editing
