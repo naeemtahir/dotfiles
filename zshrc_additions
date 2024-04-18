@@ -17,6 +17,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     source $K/MySettings/DevEnv/setenv_mac.sh
 fi
 
+export MYWIKI=$K/MyWiki
+
 # To configure your terminal to automatically start tmux as default, add the following lines to your
 # $HOME/.zshrc file, just above your aliases section.
 #
