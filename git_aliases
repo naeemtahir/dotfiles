@@ -1,4 +1,4 @@
-# Add following lines to ~/.bashrc
+# Add following lines to ~/.bashrc or ~/.zshrc
 #if [ -f ~/.git_aliases ]; then
 #    . ~/.git_aliases
 #fi

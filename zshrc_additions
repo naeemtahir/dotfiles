@@ -1,18 +1,14 @@
-# Add following lines to ~/.bashrc
-#if [ -f ~/.bashrc_additions ]; then
-#    . ~/.bashrc_additions
+# Add following lines to ~/.zshrc
+#if [ -f ~/.zshrc_additions ]; then
+#    . ~/.zshrc_additions
 #fi
 
-shopt -s direxpand
-# Enable vi style command line editing
-#set -o vi
-export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/bin
 export K=~/mnt/k
 source $K/MySettings/DevEnv/setenv_lin.sh
 
 # To configure your terminal to automatically start tmux as default, add the following lines to your
-# ~/.bashrc file, just above your aliases section.
+# ~/.zshrc file, just above your aliases section.
 #
 # Start tmux by default, if not running interactively do not do anything. Also launch it only when when there's a
 #  graphical environment running (comment 'if [[ $DISPLAY ]]; then' section if you want it to start in non GUI
