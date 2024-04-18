@@ -136,10 +136,10 @@ alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr 
 alias ipof='dig +short'
 alias iplocation='geoiplookup'                                  # Requires geoip-bin
 alias now='date +"%d-%m-%Y %T"'
-alias ts2local='python -c "import sys, time; print time.strftime(\"%Y-%m-%d %H:%M:%S\", time.localtime(float(sys.argv[1])/1000))"'
-alias urlencode='python -c "import sys, urllib; print urllib.quote_plus(sys.argv[1])"'
-alias urldecode='python -c "import sys, urllib; print urllib.unquote_plus(sys.argv[1])"'
-alias urldecode2='python -c "import sys, urllib; s=urllib.unquote_plus(sys.argv[1]); print urllib.unquote_plus(s)"'
+alias ts2local='python2 -c "import sys, time; print time.strftime(\"%Y-%m-%d %H:%M:%S\", time.localtime(float(sys.argv[1])/1000))"'
+alias urlencode='python2 -c "import sys, urllib; print urllib.quote_plus(sys.argv[1])"'
+alias urldecode='python2 -c "import sys, urllib; print urllib.unquote_plus(sys.argv[1])"'
+alias urldecode2='python2 -c "import sys, urllib; s=urllib.unquote_plus(sys.argv[1]); print urllib.unquote_plus(s)"'
 alias vcmount='veracrypt -t --mount'
 alias vcunmount='veracrypt -t --dismount'
 if [[ "$OSTYPE" == "linux"* ]]; then
@@ -148,8 +148,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 fi
 
 # Pretty Print JSON/XML
-alias jsonf='python -mjson.tool'
-alias jsonfb='pbpaste | python -mjson.tool'
+alias jsonf='python2 -mjson.tool'
+alias jsonfb='pbpaste | python2 -mjson.tool'
 alias xmlf='xmllint --format -'                                 # Requires libxml2-utils
 alias xmlfb='pbpaste | xmllint --format -'
 
