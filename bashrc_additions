@@ -7,7 +7,6 @@ shopt -s direxpand
 # Enable vi style command line editing
 #set -o vi
 export HISTCONTROL=ignoreboth:erasedups
-export KEY=Darwin
 export PATH=$PATH:~/bin
 export K=~/mnt/k
 source $K/MySettings/DevEnv/setenv_lin.sh
