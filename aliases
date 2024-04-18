@@ -6,25 +6,29 @@
 
 # Enhance common commands
 if [[ "$OSTYPE" == "linux"* ]]; then
-   alias ls='ls --color=auto'           # Colorize the output
+    alias ls='ls --color=auto'           # Colorize the output
 fi
-alias l='ls -CF'                        # List only regular files and directories
-alias la='ls -CAF'                      # List almost all (indluding hidden but excluding implied ./ ../), classified by appending one of */=>@| indicator to entries)
-alias lf='ls -1'                        # List only names of regular files and directories
+alias l='ls -CF'                        # List files and directories
+alias la='ls -CAF'                      # List files and directories, including hidden
 alias lh='ls -ld .?*'                   # List only hidden files and directories
-alias ll='ls -alF'                      # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format
-alias lli='ls -AFli'                    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, including inode
-alias llh='ls -AFlh'                    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, humane readable
-alias llt='ls -AFlt' 				    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, sorted by modification time desc
-alias lltr='ls -AFltr' 			        # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, sorted by modification time asc
+alias lf='ls -p | grep -v /'            # List files
+alias lfa='ls -a -p | grep -v /'        # List files, including hidden
+alias ld='ls -p | grep /'               # List directories
+alias lda='ls -a -p | grep /'           # List directories, including hidden
+alias ll='ls -alF'                      # List in long format
+alias lli='ls -AFli'                    # List with inode numbers
+alias llh='ls -AFlh'                    # List with humane readable size
+alias llt='ls -AFlt'                    # List by descending modification time
+alias lltr='ls -AFltr'                  # List by ascending modification time
+
 if [[ "$OSTYPE" == "linux"* ]]; then
-   alias lls='ls -AFlh --size -1 -S'    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, humane readable, sorted by size desc
-   alias llsr='ls -AFlhr --size -1 -S'  # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, humane readable, sorted by size asc
-   alias llx='ls -AFlX' 			    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, sorted by file extension desc
-   alias llxr='ls -AFlXr' 			    # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, sorted by file extension asc
+   alias lls='ls -AFlh --size -1 -S'    # List by descending size
+   alias llsr='ls -AFlhr --size -1 -S'  # List by ascending size
+   alias llx='ls -AFlX'                 # List by descending extension
+   alias llxr='ls -AFlXr'               # List by ascendng extension
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-   alias lls='ls -alFS'                 # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, humane readable, sorted by size desc
-   alias llsr='ls -alrFS'               # List almost all (indluding hidden but excluding implied ./ ../), classified (append one of */=>@| indicator to entries), in long format, humane readable, sorted by size asc
+   alias lls='ls -alFS'                 # List by descending size
+   alias llsr='ls -alrFS'               # List by ascending size
 fi
 alias cp='cp -iv'                       # Run 'cp' in interactive mode and explain what is being done
 alias df='df -h'                        # Display disk usage on all volumes
@@ -48,16 +52,16 @@ alias .9='cd ../../../../../../../../..'
 alias .10='cd ../../../../../../../../../..'
 
 # Quick Search
-alias ga='alias | grep -E'                 # Search alias
-alias gh='history | grep -E'               # Search command history
-alias gps='ps -ef | grep -E'               # Search process
+alias ga='alias | grep -E'              # Search alias
+alias gh='history | grep -E'            # Search command history
+alias gps='ps -ef | grep -E'            # Search process
 alias qf='find . -name'                 # Find file(s)/folder(s) matching name pattern
-alias qg='grep --color=auto -rin . -e'  # Find files containing text (recursive, case insensitive, file names only)
-alias qgf='function _qgf() { if [ "$#" -ge 2 ]; then grep --color=auto -n "$1" "${@:2}"; else echo "Usage: qgf <regex> <file(s)>"; fi };_qgf' # Search text in given file(s) (case insensitive)
-alias qgx='function _qgx() { if [ "$#" -eq 2 ]; then grep --color=auto -rin --include=\*.$1 . -e "$2"; else echo "Usage: qgx <file_type> <regex>"; fi };_qgx' # Find files with given extension containing text (recursive, case insensitive, file names only)
-alias qgc='grep --color=auto -rn . -e'  # Find files containing text (recursive, case sensitive, file names only)
-alias qgfc='function _qgfc() { if [ "$#" -ge 2 ]; then grep --color=auto -n "$1" "${@:2}"; else echo "Usage: qgfc <regex> <file(s)>"; fi };_qgfc' # Search text in given file(s) (case sensitive)
-alias qgxc='function _qgxc() { if [ "$#" -eq 2 ]; then grep --color=auto -rn --include=\*.$1 . -e "$2"; else echo "Usage: qgxc <file_type> <regex>"; fi };_qgxc' # Find files with given extension containing text (recursive, case sensitive, file names only)
+alias qg='grep --color=auto -rin . -e'  # Find files containing text
+alias qgf='function _qgf() { if [ "$#" -ge 2 ]; then grep --color=auto -n "$1" "${@:2}"; else echo "Usage: qgf <regex> <file(s)>"; fi };_qgf' # Search in given file(s)
+alias qgx='function _qgx() { if [ "$#" -eq 2 ]; then grep --color=auto -rin --include=\*.$1 . -e "$2"; else echo "Usage: qgx <file_type> <regex>"; fi };_qgx' # Search in given file type
+alias qgc='grep --color=auto -rn . -e'  # Search case-sensitive
+alias qgfc='function _qgfc() { if [ "$#" -ge 2 ]; then grep --color=auto -n "$1" "${@:2}"; else echo "Usage: qgfc <regex> <file(s)>"; fi };_qgfc' # Search in given file(s) (case sensitive)
+alias qgxc='function _qgxc() { if [ "$#" -eq 2 ]; then grep --color=auto -rn --include=\*.$1 . -e "$2"; else echo "Usage: qgxc <file_type> <regex>"; fi };_qgxc' # Search in given file type (case sensitive)
 
 # Shell shortcuts
 alias c='clear'
@@ -180,6 +184,14 @@ alias nn='nointernet.sh'
 alias nnkp='nointernet.sh keepassxc'
 alias nncode='nointernet.sh code'
 
+# Ripgrep
+alias rg='rg -i' # Set default mode to ignore case
+alias rgf='function _rgf() { if [ "$#" -ge 2 ]; then rg -i "$1" "${@:2}"; else echo "Usage: rgf <regex> <file(s)>"; fi };_rgf' # Search in given file(s)
+alias rgx='function _rgx() { if [ "$#" -eq 2 ]; then rg -i -t$1 "$2"; else echo "Usage: rgx <file_type> <regex>"; fi };_rgx' # Search in given file type
+alias rgc='rg -s'  # Search case-sensitive
+alias rgfc='function _rgfc() { if [ "$#" -ge 2 ]; then rg -s "$1" "${@:2}"; else echo "Usage: rgfc <regex> <file(s)>"; fi };_rgfc' # Search in given file(s) (case sensitive)
+alias rgxc='function _rgxc() { if [ "$#" -eq 2 ]; then rg -s -t$1 "$2"; else echo "Usage: rgxc <file_type> <regex>"; fi };_rgxc' # Search in given file type (case sensitive)
+
 # Rclone
 alias rcls='rclone ls'
 alias rclsd='rclone lsd'
@@ -200,11 +212,11 @@ alias vii='vi -i NONE'
 # Miscelleneous
 alias delete_conflicted='find . -name "*conflicted*" -delete'
 if [[ "$OSTYPE" == "linux"* ]]; then
-    alias diff='colordiff' 				# Requires colordiff
-    alias bcdiff='bcompare'             # Requires Beyond Compare
-    alias top='htop' 					# Requires htop
-    alias f='nautilus ./'               # Opens current directory in file manager
-    alias o='xdg-open'                  # Open file with associated program
+    alias diff='colordiff'     # Requires colordiff
+    alias bcdiff='bcompare'    # Requires Beyond Compare
+    alias top='htop'           # Requires htop
+    alias f='nautilus ./'      # Opens current directory in file manager
+    alias o='xdg-open'         # Open file with associated program
     alias refresh_menu='touch $HOME/.local/share/applications/a && rm $HOME/.local/share/applications/a'
 
     # Logs
