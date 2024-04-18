@@ -9,7 +9,7 @@ if [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Microsoft.* ]]; then
     export K=/mnt/k
 elif [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*WSL2.* ]]; then
     export K=/mnt/k
-elif [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Debian.* ]]; then
+elif [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
     export K=$HOME/mnt/k
     source $K/MySettings/DevEnv/setenv_lin.sh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
