@@ -76,6 +76,9 @@ setopt INTERACTIVE_COMMENTS
 # bind Ctrl-U to kill till beginning of line (like it works in bash)
 bindkey \^U backward-kill-line
 
+# prevent '%' or '#' at the end of partial output lines
+export PROMPT_EOL_MARK=''
+
 #===================================
 # Any custom additions go at the end
 #===================================
