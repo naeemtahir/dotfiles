@@ -7,6 +7,8 @@ export PATH=$PATH:$HOME/bin
 export PDSH_RCMD_TYPE=ssh
 if [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Microsoft.* ]]; then
     export K=/mnt/k
+elif [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*WSL2.* ]]; then
+    export K=/mnt/k
 elif [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Debian.* ]]; then
     export K=$HOME/mnt/k
     source $K/MySettings/DevEnv/setenv_lin.sh
