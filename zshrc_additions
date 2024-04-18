@@ -5,6 +5,8 @@
 
 export PATH=$PATH:~/bin
 export K=~/mnt/k
+export PDSH_RCMD_TYPE=ssh
+
 source $K/MySettings/DevEnv/setenv_lin.sh
 
 # To configure your terminal to automatically start tmux as default, add the following lines to your
