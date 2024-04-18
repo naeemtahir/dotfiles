@@ -3,6 +3,7 @@
 #if [ -f $HOME/.zsh_aliases ]; then
 #   . $HOME/.zsh_aliases
 #fi
+alias zsh_aliases='less $HOME/.zsh_aliases'
 
 # Quick navigation
 alias dh='dirs -v | head -10'

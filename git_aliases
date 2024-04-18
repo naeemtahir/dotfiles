@@ -2,6 +2,7 @@
 #if [ -f $HOME/.git_aliases ]; then
 #    . $HOME/.git_aliases
 #fi
+alias git_aliases='less $HOME/.git_aliases'
 
 alias g='git'
 alias gc='git commit -v'

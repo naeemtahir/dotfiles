@@ -2,6 +2,7 @@
 #if [ -f $HOME/.k8s_aliases ]; then
 #    . $HOME/.k8s_aliases
 #fi
+alias k8s_aliases='less $HOME/.k8s_aliases'
 
 alias k='kubectl'
 

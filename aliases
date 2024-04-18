@@ -3,6 +3,7 @@
 #if [ -f $HOME/.aliases ]; then
 #   . $HOME/.aliases
 #fi
+alias aliases='less $HOME/.aliases'
 
 # Enhance common commands
 if [[ "$OSTYPE" == "linux"* ]]; then
