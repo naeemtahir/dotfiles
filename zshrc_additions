@@ -71,3 +71,6 @@ fi
 if [ -f $HOME/.k8s_aliases ]; then
     . $HOME/.k8s_aliases
 fi
+
+# kubectl autocomplete
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell

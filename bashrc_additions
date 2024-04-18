@@ -72,3 +72,6 @@ fi
 if [ -f $HOME/.k8s_aliases ]; then
     . $HOME/.k8s_aliases
 fi
+
+# kubectl autocomplete
+source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
