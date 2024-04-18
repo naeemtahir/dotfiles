@@ -32,3 +32,5 @@ alias kproxy='function _kproxy { if [ "$#" -ge 1 ]; then kubectl proxy --port=$1
 
 alias kdpod='kubectl describe pod'
 alias kgpods='kubectl get pods'
+
+alias knamespace="kubectl config view --minify --output 'jsonpath={..namespace}'; echo"
