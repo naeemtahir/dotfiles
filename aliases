@@ -101,7 +101,9 @@ fi
 alias b64encode='python -c "import sys, base64; print base64.b64encode(sys.argv[1])"'
 alias b64decode='python -c "import sys, base64; print base64.b64decode(sys.argv[1]).decode(\"utf-8\")"'
 alias countf='find . -maxdepth 1 -type f | wc -l'               # Count files in current dir
-alias countfr='find . -type f | wc -l'                          # Count files in current dir and its subdirectories
+alias countfn='find . -type f | wc -l'                          # Count files in current dir and its subdirectories
+alias countd='find . -maxdepth 1 -type d | wc -l'               # Count subdirectories in current dir
+alias countdn='find . -type d | wc -l'                          # Count subdirectories in current dir and its subdirectories
 alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
