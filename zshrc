@@ -43,7 +43,7 @@ autoload bashcompinit && bashcompinit
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 # share history across multiple zsh sessions
 setopt SHARE_HISTORY
 # append to history
@@ -79,6 +79,6 @@ bindkey \^U backward-kill-line
 #===================================
 # Any custom additions go at the end
 #===================================
-if [ -f ~/.zshrc_additions ]; then
-    . ~/.zshrc_additions
+if [ -f $HOME/.zshrc_additions ]; then
+    . $HOME/.zshrc_additions
 fi

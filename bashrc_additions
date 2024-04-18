@@ -1,20 +1,27 @@
-# Add following lines to ~/.bashrc
-#if [ -f ~/.bashrc_additions ]; then
-#    . ~/.bashrc_additions
+# Add following lines to $HOME/.bashrc
+#if [ -f $HOME/.bashrc_additions ]; then
+#    . $HOME/.bashrc_additions
 #fi
 
+export HISTCONTROL=ignoreboth:erasedups
 shopt -s direxpand
 # Enable vi style command line editing
 #set -o vi
-export HISTCONTROL=ignoreboth:erasedups
-export PATH=$PATH:~/bin
-export K=~/mnt/k
-export PDSH_RCMD_TYPE=ssh
 
-source $K/MySettings/DevEnv/setenv_lin.sh
+export PATH=$PATH:$HOME/bin
+export PDSH_RCMD_TYPE=ssh
+if [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Microsoft.* ]]; then
+    export K=/mnt/k
+elif [[ "$OSTYPE" == "linux"* ]] && [[ $(uname -a) =~ .*Debian.* ]]; then
+    export K=$HOME/mnt/k
+    source $K/MySettings/DevEnv/setenv_lin.sh
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    export K=$HOME/k
+    source $K/MySettings/DevEnv/setenv_mac.sh
+fi
 
 # To configure your terminal to automatically start tmux as default, add the following lines to your
-# ~/.bashrc file, just above your aliases section.
+# $HOME/.bashrc file, just above your aliases section.
 #
 # Start tmux by default, if not running interactively do not do anything. Also launch it only when when there's a
 #  graphical environment running (comment 'if [[ $DISPLAY ]]; then' section if you want it to start in non GUI
@@ -32,34 +39,34 @@ if [[ $DISPLAY ]]; then
     fi
 fi
 
-if [ -f ~/.bashrc_additions_private ]; then
-    . ~/.bashrc_additions_private
+if [ -f $HOME/.bashrc_additions_private ]; then
+    . $HOME/.bashrc_additions_private
 fi
 
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
+if [ -f $HOME/.aliases ]; then
+    . $HOME/.aliases
 fi
 
-if [ -f ~/.functions ]; then
-    . ~/.functions
+if [ -f $HOME/.functions ]; then
+    . $HOME/.functions
 fi
 
-if [ -f ~/.destination_aliases ]; then
-    . ~/.destination_aliases
+if [ -f $HOME/.destination_aliases ]; then
+    . $HOME/.destination_aliases
 fi
 
-if [ -f ~/.mount_aliases ]; then
-    . ~/.mount_aliases
+if [ -f $HOME/.mount_aliases ]; then
+    . $HOME/.mount_aliases
 fi
 
-if [ -f ~/.git_aliases ]; then
-    . ~/.git_aliases
+if [ -f $HOME/.git_aliases ]; then
+    . $HOME/.git_aliases
 fi
 
-if [ -f ~/.docker_aliases ]; then
-    . ~/.docker_aliases
+if [ -f $HOME/.docker_aliases ]; then
+    . $HOME/.docker_aliases
 fi
 
-if [ -f ~/.k8s_aliases ]; then
-    . ~/.k8s_aliases
+if [ -f $HOME/.k8s_aliases ]; then
+    . $HOME/.k8s_aliases
 fi
