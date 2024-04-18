@@ -4,33 +4,112 @@
 #fi
 
 alias k='kubectl'
-alias kd='kubectl describe'
-alias ke='kubectl exec'
-alias kg='kubectl get'
 
-alias kci='kubectl cluster-info'
-alias kcp='kubectl cp'
-alias kei='kubectl exec -it'
-alias klog='kubectl logs'
+#------------------------------------------------------------------------------------------------
+# RESOURCES                                                                                     #
+#------------------------------------------------------------------------------------------------
+                                                                                                #
+# Get resource                                                                                  #
+alias kg='kubectl get'                                                                          #
+alias kga='kubectl get all'                                                                     #
+                                                                                                #
+# Describe resource                                                                             #
+alias kd='kubectl describe'                                                                     #
+                                                                                                #
+# Create/Modify/Delte resource                                                                  #
+alias kcre='kubectl create'                                                                     #
+alias kedit='kubectl edit'                                                                      #
+alias kdel='kubectl delete'                                                                     #
+alias kapply='kubectl apply'                                                                    #
+alias kpatch='kubectl patch'                                                                    #
+                                                                                                #
+# Diff configurations specified by file name, and the configuration as it would be if applied.  # 
+alias kdiff='kubectl diff'                                                                      #
+#------------------------------------------------------------------------------------------------
 
-alias kcre='kubectl create'
-alias kdel='kubectl delete'
-alias kexp='kubectl explain'
-alias krun='kubectl run'
-alias ktop='kubectl top'
 
-alias kconf='kubectl config'
-alias kdiff='kubectl diff'
-alias kroll='kubectl rollout'
+#-------------------------------------------
+# PODS                                     #
+#-------------------------------------------
+                                           #
+# List pod                                 #
+alias kgpods='kubectl get pods'            #
+alias kgpodsw='kubectl get pods --watch'   #
+                                           #
+# Describe pod                             #
+alias kdpod='kubectl describe pod'         #
+                                           #
+# Show pod logs                            #
+alias klogs='kubectl logs'                 #
+alias klogsf='kubectl logs -f'             #
+                                           #
+# Run commands in pods                     #
+alias ke='kubectl exec'                    #
+alias kei='kubectl exec -it'               #
+                                           #
+# Copy files to/from pods                  #
+alias kcp='kubectl cp'                     #
+#-------------------------------------------
 
-alias kapply='kubectl apply'
-alias kpatch='kubectl patch'
-alias kscale='kubectl scale'
 
-alias kportf='kubectl port-forward'
-alias kproxy='function _kproxy { if [ "$#" -ge 1 ]; then kubectl proxy --port=$1; else kubectl proxy --port=8080; fi };_kproxy'
+#-------------------------------------------
+# DEPLOYMENTS                              #
+#-------------------------------------------
+                                           #
+# List deployments                         #
+alias kgdep='kubectl get deployments'      #
+                                           #
+# Describe deployment                      #
+alias kddep='kubectl describe deployment'  #
+                                           #
+# Run a particular image in a pod          #
+alias krun='kubectl run'                   #
+                                           #
+# Scale a deployment                       #
+alias kscale='kubectl scale'               #
+                                           #
+# Manage deployment rollout                #
+alias kroll='kubectl rollout'              #
+#-------------------------------------------
 
-alias kdpod='kubectl describe pod'
-alias kgpods='kubectl get pods'
 
-alias knamespace="kubectl config view --minify --output 'jsonpath={..namespace}'; echo"
+#--------------------------------------------------------------------------------------------------------------------------------
+# INTERACT WITH DEPLOYED RESOURCES (pods/deployments/services) FROM LOCAL MACHINE                                               #
+#--------------------------------------------------------------------------------------------------------------------------------
+                                                                                                                                #
+# Forward one or more local ports to a pod.                                                                                     #
+alias kportf='kubectl port-forward'                                                                                             #
+                                                                                                                                #
+# Creates a proxy server or application-level gateway between localhost and the Kubernetes API server                           #
+alias kproxy='function _kproxy { if [ "$#" -ge 1 ]; then kubectl proxy --port=$1; else kubectl proxy --port=8080; fi };_kproxy' #
+#--------------------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------
+# METADATA                                                                               #
+#-----------------------------------------------------------------------------------------
+                                                                                         #
+# Display resource cpu/mem usage                                                         #
+alias ktop='kubectl top'                                                                 #
+                                                                                         #
+# Display/modify kubeconfig                                                              #
+alias kconf='kubectl config'                                                             #
+                                                                                         #
+# Display cluster/namespace/context information                                          #
+alias kcluster='kubectl cluster-info'                                                    #
+alias knamespace="kubectl config view --minify --output 'jsonpath={..namespace}'; echo"  #
+alias kcontext='kubectl config current-context'                                          #
+#-----------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------------------------------
+# HELP                                                                                                                                #
+#--------------------------------------------------------------------------------------------------------------------------------------
+                                                                                                                                      #
+# Display command help                                                                                                                #
+alias khelp='function _khelp() { if [ "$#" -eq 1 ]; then kubectl $1 --help | less; else echo "Usage: khelp <command>"; fi };_khelp'   # 
+                                                                                                                                      #
+# Explain resource                                                                                                                    #
+alias kexp='kubectl explain'                                                                                                          #
+#--------------------------------------------------------------------------------------------------------------------------------------
+
