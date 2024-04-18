@@ -1,0 +1,119 @@
+# Add these lines to ~/.bashrc if they don't already exist
+#
+#if [ -f ~/.bash_functions ]; then
+#    . ~/.bash_functions
+#fi
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NO_COLOR='\033[0m'
+
+# AuatChange directory and list files 
+function cl() {
+    # if no DIR given, go home
+    DIR=$HOME
+    if [ "$#" -eq 1 ] && [ -d "$1" ]; then
+        DIR="$1"
+    fi
+        
+    builtin cd "$DIR" && ls -alF --color=auto
+}
+
+# Make directory and cd into it
+mkcd() { 
+    mkdir -p "$1" && cd "$1"
+}
+
+# Backup a file
+bak() { 
+    if [ "$#" -eq 1 ] && [ -f "$1" ]; then
+        cp "$1"{,.bak};
+    fi
+}
+
+# Verify MD5 Hash
+md5check() {
+    if [ "$#" -eq 2 ] && [ -f "$1" ]; then
+        hash=`md5sum $1 | sed 's/ .*//'`;
+
+        if [[ "$hash" == "$2" ]]; then
+            echo -e "${GREEN}Valid Hash${NO_COLOR}"
+        else
+            echo -e "${RED}Invalid Hash${NO_COLOR}"
+        fi
+    else
+        echo "Verify MD5 signature of a file"
+        echo "Usage: md5check <file> <hash>"
+    fi
+}
+
+# Verify SHA1 Hash
+sha1check() {
+    if [ "$#" -eq 2 ] && [ -f "$1" ]; then
+        hash=`sha1sum $1 | sed 's/ .*//'`;
+
+        if [[ "$hash" == "$2" ]]; then
+            echo -e "${GREEN}Valid Hash${NO_COLOR}"
+        else
+            echo -e "${RED}Invalid Hash${NO_COLOR}"
+        fi
+    else
+        echo "Verify SHA1 signature of a file"
+        echo "Usage: sha1check <file> <hash>"
+    fi
+}
+
+# Verify SHA256 Hash
+sha256check() {
+    if [ "$#" -eq 2 ] && [ -f "$1" ]; then
+        hash=`sha256sum $1 | sed 's/ .*//'`;
+
+        if [[ "$hash" == "$2" ]]; then
+            echo -e "${GREEN}Valid Hash${NO_COLOR}"
+        else
+            echo -e "${RED}Invalid Hash${NO_COLOR}"
+        fi
+    else
+        echo "Verify SHA256 signature of a file"
+        echo "Usage: sha256check <file> <hash>"
+    fi
+}
+
+# Verify SHA512 Hash
+sha512check() {
+    if [ "$#" -eq 2 ] && [ -f "$1" ]; then
+        hash=`sha512sum $1 | sed 's/ .*//'`;
+
+        if [[ "$hash" == "$2" ]]; then
+            echo -e "${GREEN}Valid Hash${NO_COLOR}"
+        else
+            echo -e "${RED}Invalid Hash${NO_COLOR}"
+        fi
+    else
+        echo "Verify SHA512 signature of a file"
+        echo "Usage: sha512check <file> <hash>"
+    fi
+}
+
+# Extract any kind of archive
+extract() { 
+    if [ "$#" -eq 1 ] && [ -f "$1" ]; then
+      case $1 in 
+        *.tar.bz2)   tar xjf $1     ;; 
+        *.tar.gz)    tar xzf $1     ;; 
+        *.bz2)       bunzip2 $1     ;; 
+        *.rar)       unrar e $1     ;; 
+        *.gz)        gunzip $1      ;; 
+        *.tar)       tar xf $1      ;; 
+        *.tbz2)      tar xjf $1     ;; 
+        *.tgz)       tar xzf $1     ;; 
+        *.zip)       unzip $1       ;; 
+        *.Z)         uncompress $1  ;; 
+        *.7z)        7z x $1        ;; 
+        *)     echo "'$1' cannot be extracted via extract()" ;; 
+         esac 
+     else 
+        echo "Extract any kind of archive"
+        echo "Usage: extract <archive>"
+     fi 
+}

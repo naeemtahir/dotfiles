@@ -1,0 +1,25 @@
+# Add following lines to ~/.bashrc
+#if [ -f ~/.git_aliases ]; then
+#    . ~/.git_aliases
+#fi
+
+alias g='git'
+alias gc='git commit'
+alias gbr='git branch'
+alias gco='git checkout '
+alias gst='git status '
+alias gadd='git add '
+alias gdiff='git diff'
+alias greset='git reset'
+alias gclean='git clean -f -d -i'
+alias gstash='git stash'
+alias gunstash='git stash pop'
+alias gpull='git pull'
+alias gpush='git push'
+alias gmerge='git merge'
+alias grebase='git rebase'
+alias gblame='git blame'
+alias gshow='git show --name-only'
+alias gremote='git remote -v'
+alias glog="git log --pretty=format:'%h %ad | %s%d [%an]' --date=short --graph"
+alias gerrit_review='git push origin HEAD:refs/for/master'
