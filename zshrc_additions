@@ -34,8 +34,8 @@ if [[ $DISPLAY ]]; then
     fi
 fi
 
-if [ -f $HOME/.bashrc_additions_private ]; then
-    . $HOME/.bashrc_additions_private
+if [ -f $HOME/.zshrc_additions_private ]; then
+    . $HOME/.zshrc_additions_private
 fi
 
 if [ -f $HOME/.zsh_aliases ]; then
