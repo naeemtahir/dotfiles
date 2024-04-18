@@ -4,6 +4,8 @@
 #fi
 
 shopt -s direxpand
+# Enable vi style command line editing
+#set -o vi
 export HISTCONTROL=ignoreboth:erasedups
 export KEY=Darwin
 export PATH=$PATH:~/bin
