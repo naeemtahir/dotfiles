@@ -130,7 +130,7 @@ alias xmlfb='pbpaste | xmllint --format -'
 #       sudo chmod a+rx /usr/local/bin/youtube-dl
 # Checkout: https://askubuntu.com/questions/486297/how-to-select-video-quality-from-youtube-dl
 alias audio-dl='function _audio-dl { if [ "$#" -eq 1 ]; then youtube-dl -x --audio-format mp3 --output "%(title)s.%(ext)s" $1; else echo "Usage: audio-dl <video-url>"; fi };_audio-dl'
-alias video-dl='function _video-dl { if [ "$#" -eq 1 ]; then youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo "Usage: video-dl <video-url>"; fi };_video-dl'
+alias video-dl="function _video-dl { if [ "$#" -eq 1 ]; then youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 $1; else echo 'Usage: video-dl <video-url>'; fi };_video-dl"
 
 # Format conversion
 alias vid2mp3='function _2mp3() { if [ "$#" -eq 2 ]; then ffmpeg -i "$1" -acodec libmp3lame -ab "$2" "$1.mp3"; else echo "Usage: 2mp3 <audio-file> <bitrate, 64k/128k/256k etc.>"; fi };_2mp3'   # Requires ffmpeg
