@@ -98,8 +98,17 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Utilities
-alias b64encode='function _b64encode() { if [ "$#" -eq 1 ]; then echo "$1" | base64 -w 0; else echo "Usage: b64encode <str>"; fi };_b64encode'
-alias b64decode='function _b64decode() { if [ "$#" -eq 1 ]; then echo "$1" | base64 -d; else echo "Usage: b64decode <str>"; fi };_b64decode'
+if [[ "$OSTYPE" == "linux"* ]]; then
+    alias b64='function _b64() { if [ "$#" -eq 1 ]; then echo "$1" | base64 -w 0; else echo "Usage: b64 <str>"; fi };_b64'
+    alias b64url='function _b64url() { if [ "$#" -eq 1 ]; then echo "$1" | base64 -w 0 | sed "s/\//_/g;s/\+/\-/g;s/=/%3D/g"; else echo "Usage: b64url <str>"; fi };_b64url'
+    alias b64d='function _b64d() { if [ "$#" -eq 1 ]; then echo "$1" | base64 -d -i; else echo "Usage: b64d <str>"; fi };_b64d'
+    alias b64urld='function _b64urld() { if [ "$#" -eq 1 ]; then echo "$1" | sed "s/_/\//g;s/\-/\+/g;s/%3D/=/g" | base64 -d -i; else echo "Usage: b64urld <str>"; fi };_b64urld'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    alias b64='function _b64() { if [ "$#" -eq 1 ]; then echo "$1" | base64; else echo "Usage: b64 <str>"; fi };_b64'
+    alias b64url='function _b64url() { if [ "$#" -eq 1 ]; then echo "$1" | base64 | sed "s/\//_/g;s/\+/\-/g;s/=/%3D/g"; else echo "Usage: b64url <str>"; fi };_b64url'
+    alias b64d='function _b64d() { if [ "$#" -eq 1 ]; then echo "$1" | base64 -D; else echo "Usage: b64d <str>"; fi };_b64d'
+    alias b64urld='function _b64urld() { if [ "$#" -eq 1 ]; then echo "$1" | sed "s/_/\//g;s/\-/\+/g;s/%3D/=/g" | base64 -D; else echo "Usage: b64urld <str>"; fi };_b64urld'
+fi
 alias calc='function _calc() { if [ "$#" -eq 1 ]; then echo "$1" | bc -l; else echo "Usage: calc \"expression\""; fi };_calc'
 alias countf='find . -maxdepth 1 -type f | wc -l'               # Count files in current dir
 alias countfn='find . -type f | wc -l'                          # Count files in current dir and its subdirectories
@@ -122,7 +131,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias pbpaste='xsel --clipboard --output'
 fi
 
-# Programming
+# Formatting 
 alias jsonf='python -mjson.tool'
 alias jsonfb='pbpaste | python -mjson.tool'
 alias xmlf='xmllint --format -'                                 # Requires libxml2-utils
