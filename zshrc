@@ -5,8 +5,21 @@ autoload -Uz promptinit
 promptinit
 # run 'prompt -l' to see available prompt themes
 #prompt suse
+
 # or create your own
-PROMPT='%F{yellow}%B%n@%m[%?]:%f%~%F{yellow}%(!.#.$) %b%f'
+#PROMPT='%F{yellow}%B%n@%m[%?]:%f%~%F{yellow}%(!.#.$) %b%f'
+
+# or create your own that includes Git branch info
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '%b'
+
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+PROMPT='%F{yellow}%B%n@%m[%?]:%f %~%F{green} ${vcs_info_msg_0_}%F{yellow}%(!.#.$) %b%f'
 
 #============
 # Keybindings
