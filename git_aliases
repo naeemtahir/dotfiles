@@ -27,5 +27,6 @@ alias grebase='git rebase'
 alias gblame='git blame'
 alias gshow='git show --name-only'
 alias gremote='git remote -v'
-alias glog="git log --pretty=format:'%h %ad | %s%d [%an]' --date=short --graph"
+alias glog='git log --pretty=format:"%h %ad | %s%d [%an]" --date=short --graph'
+alias gshowcommitsby='function _gshowcommitsby() { if [ "$#" -eq 1 ]; then git log --date=short --all --author="$1"; else echo "Usage: gshowcommitsby <author email>"; fi };_gshowcommitsby'
 alias gerrit_review='git push origin HEAD:refs/for/master'
