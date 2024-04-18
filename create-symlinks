@@ -8,4 +8,4 @@ for f in `ls`; do
 done
 
 rm $HOME/.$script_name
-
+rm $HOME/.push2gh.sh
