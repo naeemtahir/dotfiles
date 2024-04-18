@@ -167,9 +167,9 @@ alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -s
 
 # Encryption/Decryption
 alias aescrypt='function _aescrypt() { if [ "$#" -eq 1 ]; then openssl enc -e -aes-256-cbc -pbkdf2 -salt -in "$1" -out "$1".enc; else echo "Usage: aescrypt <file>"; fi };_aescrypt' # Requires OpenSSL
-alias aesdecrypt='function _aesdecrypt() { if [ "$#" -eq 1 ]; then openssl enc -d -aes-256-cbc -pbkdf2 -salt -in "$1" -out "${1%.*}"; else echo "Usage: aesdecrypt <file>"; fi };_aesdecrypt' # Requires OpenSSL
+alias aesdecrypt='function _aesdecrypt() { if [ "$#" -eq 2 ]; then openssl enc -d -aes-256-cbc -pbkdf2 -salt -in "$1" -out "$2"; else echo "Usage: aesdecrypt <input_file> <output_file>"; fi };_aesdecrypt' # Requires OpenSSL
 alias gpgcrypt='function _gpgcrypt() { if [ "$#" -eq 2 ]; then gpg -o "$1".gpg -e -r $2 "$1"; else echo "Usage: gpgcrypt <file> <key>"; fi };_gpgcrypt' # Requires GnuPG
-alias gpgdecrypt='function _gpgdecrypt() { if [ "$#" -eq 1 ]; then gpg -o "${1%.*}" -d "$1"; else echo "Usage: gpgdecrypt <file>"; fi };_gpgdecrypt' # Requires GnuPG
+alias gpgdecrypt='function _gpgdecrypt() { if [ "$#" -eq 2 ]; then gpg -o "$2" -d "$1"; else echo "Usage: gpgdecrypt <input_file> <output_file>"; fi };_gpgdecrypt' # Requires GnuPG
 
 # Rclone
 alias rcls='rclone ls'
