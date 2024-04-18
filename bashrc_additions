@@ -23,6 +23,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 export MYWIKI=$K/MyWiki
+export TODO=$K/MyDocuments/TODO.txt
 
 # To configure your terminal to automatically start tmux as default, add the following lines to your
 # $HOME/.bashrc file, just above your aliases section.
