@@ -202,3 +202,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias f='open -a Finder ./'  # Opens current directory in MacOS Finder - Mac
     alias o='open'               # Open file with associated program
 fi
+
+# Suffix aliases
+if [[ $SHELL == *zsh* ]]; then
+    alias -s {txt,TXT}='less'
+    alias -s {yml,yaml,md}='vi'
+    alias -s {log,LOG}='tail -f'
+fi
