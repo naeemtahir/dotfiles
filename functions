@@ -16,7 +16,7 @@ function cl() {
         DIR="$1"
     fi
         
-    builtin cd "$DIR" && ls -alF --color=auto
+    builtin cd "$DIR" && ls -alF
 }
 
 # Make directory and cd into it
