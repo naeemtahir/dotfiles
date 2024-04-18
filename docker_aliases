@@ -5,60 +5,25 @@
 
 alias d='docker'
 
-# List running containers
-alias dcl="docker container ls" 
+alias dcl="docker container ls" # List running containers
+alias dcla="docker container ls -a" # List all containers
+alias dcll="docker container ls -l" # List latest container
+alias dcip="docker container inspect --format '{{ .NetworkSettings.IPAddress }}'"   # Get container IP
+alias dcr="docker container run -i -t -P" # Run interactive container, e.g., $dcr base /bin/bash
+alias dcrd="docker container run -d -P" # Run demonized container, e.g., $dcrd base /bin/echo hello
+alias dcex="docker container exec"  # Execute command in container, e.g., $dcex base ls /
+alias dcexi="docker container exec -it" # Execute interactive command in container, e.g., $dcexi base /bin/bash
+alias dcsh='function _dcsh() { if [ "$#" -eq 1 ]; then docker container exec -it $1 sh; else echo "Usage: dcsh <container_id>"; fi };_dcsh' # sh into container
+alias dcbash='function _dcbash() { if [ "$#" -eq 1 ]; then docker container exec -it $1 bash; else echo "Usage: dcbash <container_id>"; fi };_dcbash'   # bash into container
+alias dcs='docker container stop'   # Stop container
+alias dcsrm='function _dcsrm() { if [ "$#" -eq 1 ]; then docker container stop $1 && docker container rm $1; else echo "Usage: dcsrm <container_id>"; fi };_dcsrm'  # Stop and Remove container
+alias dcsa='docker container stop $(docker container ps -a -q)' # Stop all containers
+alias dcsrma='docker container stop $(docker container ps -a -q) && docker container rm $(docker container ps -a -q)'   # Stop and Remove all containers
+alias dcrm='docker container rm'    # Remove container
+alias dcrma='docker container rm $(docker container ps -a -q)'  # Remove all containers
 
-# List all containers
-alias dcla="docker container ls -a"
+alias dil="docker images"   # List images
+alias dirm='docker image rm'    # Remove image
+alias dirma='docker image rm $(docker image ls -q)' # Remove all images
 
-# List latest container
-alias dcll="docker container ls -l"
-
-# Get container IP
-alias dcip="docker container inspect --format '{{ .NetworkSettings.IPAddress }}'"
-
-# Run interactive container, e.g., $dcr base /bin/bash
-alias dcr="docker container run -i -t -P"
-
-# Run demonized container, e.g., $dcrd base /bin/echo hello
-alias dcrd="docker container run -d -P"
-
-# Execute command in container, e.g., $dcex base ls /
-alias dcex="docker container exec"
-
-# Execute interactive command in container, e.g., $dcexi base /bin/bash
-alias dcexi="docker container exec -it"
-
-# sh/bash into container
-alias dcsh='function _dcsh() { if [ "$#" -eq 1 ]; then docker container exec -it $1 sh; else echo "Usage: dcsh <container_id>"; fi };_dcsh'
-alias dcbash='function _dcbash() { if [ "$#" -eq 1 ]; then docker container exec -it $1 bash; else echo "Usage: dcbash <container_id>"; fi };_dcbash'
-
-# Stop container
-alias dcs='docker container stop'
-
-# Stop all containers
-alias dcsa='docker container stop $(docker container ps -a -q)'
-
-# Remove container
-alias dcrm='docker container rm'
-
-# Remove all containers
-alias dcrma='docker container rm $(docker container ps -a -q)'
-
-# Stop and Remove container
-alias dcsrm='function _dcsrm() { if [ "$#" -eq 1 ]; then docker container stop $1 && docker container rm $1; else echo "Usage: dcsrm <container_id>"; fi };_dcsrm'
-
-# Stop and Remove all containers
-alias dcsrma='docker container stop $(docker container ps -a -q) && docker container rm $(docker container ps -a -q)'
-
-# List images
-alias dil="docker images"
-
-# Remove image
-alias dirm='docker image rm'
-
-# Remove all images
-alias dirma='docker image rm $(docker image ls -q)'
-
-# Dockerfile build, e.g., $dbuild ntr/test 
-alias dbuild='function _dbuild() { if [ "$#" -eq 1 ]; then docker build -t=$1 .; else echo "Usage: dbuild <image_id>"; fi };_dbuild'
+alias dbuild='function _dbuild() { if [ "$#" -eq 1 ]; then docker build -t=$1 .; else echo "Usage: dbuild <image_id>"; fi };_dbuild'    # Dockerfile build, e.g., $dbuild ntr/test 
