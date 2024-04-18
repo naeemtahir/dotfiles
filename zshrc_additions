@@ -76,6 +76,11 @@ if [ -f $HOME/.k8s_aliases ]; then
     . $HOME/.k8s_aliases
 fi
 
+# System specific overrides (e.g., different TODO or MYWIKI path for work computer)
+if [ -f $HOME/.overrides ]; then
+    . $HOME/.overrides
+fi
+
 # kubectl autocomplete
 if [[ "$OSTYPE" == "linux"* ]] && ([[ $(uname -a) =~ .*Debian.* ]] || [[ $(uname -a) =~ .*Ubuntu.* ]]); then
     if command -v kubectl &> /dev/null; then
