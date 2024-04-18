@@ -68,7 +68,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias archinfo='dpkg --print-architecture'                      # Display CPU Architecture
     alias cpuinfo='lscpu'                                           # Display CPU info
     alias deviceinfo='lspci'                                        # Display devices
-    alias diskinfo='df -h /'                                        # Display disk usage
+    alias diskspace='function _diskspace() { if [ "$#" -eq 1 ]; then df -h "$1"; else echo "Usage: diskspace <mount point, e.g., / or ~/mnt/k>"; fi };_diskspace'   # Display disk usage
     alias distinfo='lsb_release -sd'                                # Display distribution info
     alias meminfo='free -m -l -t'                                   # Display memory usage
     alias osinfo='lsb_release -sd'                                  # Display OS info
@@ -87,7 +87,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias archinfo='uname -a'
     alias cpuinfo='sysctl -n machdep.cpu.brand_string'              # Display CPU info
     alias deviceinfo='ioreg -p IOUSB'                               # Display devices
-    alias diskinfo='df -h /'                                        # Display disk usage
+    alias diskspace='function _diskspace() { if [ "$#" -eq 1 ]; then df -h "$1"; else echo "Usage: diskspace <mount point, e.g., / or ~/mnt/k>"; fi };_diskspace'   # Display disk usage
     alias distinfo='uname -a'                                       # Display distribution info
     alias osinfo='uname -a'                                         # Display OS info
     alias usbinfo='ioreg -p IOUSB'                                  # Display USB devices
