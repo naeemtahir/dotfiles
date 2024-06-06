@@ -134,6 +134,7 @@ alias countdn='find . -type d | wc -l'                          # Count subdirec
 alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
 alias genpasswd="cat /dev/urandom | tr -cd '[:graph:]' | head -c 12"
+alias webserver="python3 -m http.server 9999"                   # Start HTTP server in current directory to share files
 alias ipof='dig +short'
 alias iplocation='geoiplookup'                                  # Requires geoip-bin
 alias now='date +"%d-%m-%Y %T"'
