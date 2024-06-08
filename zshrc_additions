@@ -5,6 +5,7 @@
 
 export PATH=$PATH:$HOME/.local/bin
 
+# TMUX Configuration
 # To configure your terminal to automatically start tmux as default, add the following lines to your
 # $HOME/.zshrc file, just above your aliases section.
 #
@@ -23,6 +24,12 @@ export PATH=$PATH:$HOME/.local/bin
 #       test -z "$TMUX" && (tmux attach || tmux new-session)
 #    fi
 #fi
+
+# FZF Configuraiton
+export FZF_DEFAULT_COMMAND="fd --type f"
+# Adjust paths of these scripts on new systems (e.g., on Debian 'dpkg -L fzf')
+. /usr/share/doc/fzf/examples/key-bindings.zsh
+. /usr/share/doc/fzf/examples/completion.zsh
 
 if [ -f $HOME/.env ]; then
     . $HOME/.env
