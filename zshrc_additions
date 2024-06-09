@@ -26,10 +26,12 @@ export PATH=$PATH:$HOME/.local/bin
 #fi
 
 # FZF Configuraiton
-export FZF_DEFAULT_COMMAND="fd --type f"
-# Adjust paths of these scripts on new systems (e.g., on Debian 'dpkg -L fzf')
-. /usr/share/doc/fzf/examples/key-bindings.zsh
-. /usr/share/doc/fzf/examples/completion.zsh
+if which fzf >/dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND="fd --type f"
+    # Adjust paths of these scripts on new systems (e.g., on Debian 'dpkg -L fzf')
+    . /usr/share/doc/fzf/examples/key-bindings.zsh
+    . /usr/share/doc/fzf/examples/completion.zsh
+fi
 
 if [ -f $HOME/.env ]; then
     . $HOME/.env
