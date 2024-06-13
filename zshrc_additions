@@ -27,10 +27,16 @@ export PATH=$PATH:$HOME/.local/bin
 
 # FZF Configuraiton
 if which fzf >/dev/null 2>&1; then
+    # Replace default 'find' command with the faster alternative 'fd'
     export FZF_DEFAULT_COMMAND="fd --type f"
-    # Adjust paths of these scripts on new systems (e.g., on Debian 'dpkg -L fzf')
+
+    # Shell integration
+    # Adjust paths of these scripts on new systems (e.g., on Debian 'dpkg -L fzf').
+      # For newer versions (fzf v0.48.0+) use ''
     . /usr/share/doc/fzf/examples/key-bindings.zsh
     . /usr/share/doc/fzf/examples/completion.zsh
+      # For newer versions (fzf v0.48.0+)
+    # source <(fzf --zsh)
 fi
 
 if [ -f $HOME/.env ]; then
