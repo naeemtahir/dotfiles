@@ -131,7 +131,6 @@ alias countf='find . -maxdepth 1 -type f | wc -l'               # Count files in
 alias countfn='find . -type f | wc -l'                          # Count files in current dir and its subdirectories
 alias countd='find . -maxdepth 1 -type d | wc -l'               # Count subdirectories in current dir
 alias countdn='find . -type d | wc -l'                          # Count subdirectories in current dir and its subdirectories
-alias dis='display -resize x1000'                               # Requires imagemagick
 alias empty='cat /dev/null >'
 alias genpasswd="cat /dev/urandom | tr -cd '[:graph:]' | head -c 12"
 alias webserver="python3 -m http.server 9999"                   # Start HTTP server in current directory to share files
@@ -193,12 +192,12 @@ alias html2pdf='function _html2pdf() { if [ "$#" -eq 1 ]; then pandoc "$1" -f ht
 alias html2docx='function _html2doc() { if [ "$#" -eq 1 ]; then pandoc "$1" -f html -t docx -s -o "$1".docx; else echo "Usage: html2doc <html file>"; fi };_html2doc' # Requires pandoc
 
 # Photo Management
-alias display_all='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) -exec display "{}" \;'
-alias display_all_fit='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) -exec display -resize 1024x1024 "{}" \;'
-alias display_fit='display -resize 1024x1024'
+alias display_all='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) | sort | xargs -L 1 display' # Requires ImageMagick
+alias display_all_fit='find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" \) | sort | xargs -L 1 display -resize x1024' # Requires ImageMagick
+alias display_fit='display -resize x1024' # Requires ImageMagick
 alias photoframe='function _photoframe(){ if [ "$#" -eq 1 ]; then photocopy.sh $1 _frame -y; else echo "Usage: photoframe <output dir>"; fi };_photoframe'
 alias photoprint='function _photoprint(){ if [ "$#" -eq 1 ]; then photocopy.sh $1 _print -n; else echo "Usage: photoprint <output dir>"; fi };_photoprint'
-alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -size "$1" plasma:fractal $2; else echo "Usage: random_image <size, e.g., 1024x768> <image file>"; fi };_random_image'
+alias random_image='function _random_image(){ if [ "$#" -eq 2 ]; then convert -size "$1" plasma:fractal $2; else echo "Usage: random_image <size, e.g., 1024x768> <image file>"; fi };_random_image' # Requires ImageMagick
 alias jpegJPG2jpg='rename "s/(.jpeg|.JPG)/.jpg/" *.*'  # Requires rename
 
 # Audio/Video Management
