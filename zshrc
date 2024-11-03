@@ -77,8 +77,8 @@ setopt HIST_IGNORE_SPACE
 #===================================
 # Auto-correction and Tab Completion
 #===================================
-setopt CORRECT
-setopt CORRECT_ALL
+#setopt CORRECT
+#setopt CORRECT_ALL
 
 #==============
 # Miscellaneous
