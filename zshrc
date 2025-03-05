@@ -21,15 +21,6 @@ zstyle ':vcs_info:git:*' formats '%b'
 setopt PROMPT_SUBST
 PROMPT='%F{yellow}%B%n@%m[%?]:%f %~%F{green} ${vcs_info_msg_0_}%F{yellow}%(!.#.$) %b%f'
 
-#============
-# Keybindings
-#============
-# Use emacs keybindings
-bindkey -e
-
-# Use vi keybindings
-#bindkey -v
-
 #===================
 # Command Completion
 #===================
