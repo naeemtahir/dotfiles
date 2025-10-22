@@ -3,7 +3,6 @@
 #    . $HOME/.bashrc_additions
 #fi
 
-export PATH=$PATH:$HOME/.local/bin
 export HISTCONTROL=ignoreboth:erasedups
 
 shopt -s direxpand
@@ -29,19 +28,6 @@ shopt -s direxpand
 #       test -z "$TMUX" && (tmux attach || tmux new-session)
 #    fi
 #fi
-
-# FZF Configuraiton
-if which fzf >/dev/null 2>&1; then
-    # Replace default 'find' command with the faster alternative 'fd'
-    export FZF_DEFAULT_COMMAND="fd --type f"  #
-
-    # Shell integration
-      # Adjust paths of these scripts on new systems (e.g., on Debian 'dpkg -L fzf').
-    . /usr/share/doc/fzf/examples/key-bindings.bash
-    . /usr/share/doc/fzf/examples/completion.bash
-      # For newer versions (fzf v0.48.0+)
-    # eval "$(fzf --bash)"
-fi
 
 if [ -f $HOME/.env ]; then
     . $HOME/.env
