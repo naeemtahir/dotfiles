@@ -6,8 +6,15 @@
 export HISTCONTROL=ignoreboth:erasedups
 
 shopt -s direxpand
-# Enable vi style command line editing
-#set -o vi
+
+#============
+# Keybindings
+#============
+# Use emacs keybindings
+#set -o emacs
+#
+# Use vi keybindings
+set -o vi
 
 # TMUX Configuration
 # To configure your terminal to automatically start tmux as default, add the following lines to your
@@ -57,13 +64,4 @@ fi
 if [ -f $HOME/.overrides_and_additions ]; then
     . $HOME/.overrides_and_additions
 fi
-
-#============
-# Keybindings
-#============
-# Use emacs keybindings
-#set -o emacs
-#
-# Use vi keybindings
-set -o vi
 

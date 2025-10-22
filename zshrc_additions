@@ -3,6 +3,15 @@
 #    . $HOME/.zshrc_additions
 #fi
 
+#============
+# Keybindings
+#============
+# Use emacs keybindings
+#bindkey -e
+#
+## Use vi keybindings
+bindkey -v
+
 # TMUX Configuration
 # To configure your terminal to automatically start tmux as default, add the following lines to your
 # $HOME/.zshrc file, just above your aliases section.
@@ -55,13 +64,3 @@ fi
 if [ -f $HOME/.overrides_and_additions ]; then
     . $HOME/.overrides_and_additions
 fi
-
-#============
-# Keybindings
-#============
-# Use emacs keybindings
-#bindkey -e
-#
-## Use vi keybindings
-bindkey -v
-
