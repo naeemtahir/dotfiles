@@ -92,8 +92,10 @@ if [[ "$OSTYPE" == "linux"* ]]; then
     alias top10mem='ps auxf | sort -nr -k 4 | head -10'             # List top 10 processes by memory usage
     alias top10dir='du -a . | sort -n -r | head -n 10'              # List top 10 directories by size
     alias top10files='find -type f -exec du -Sh {} + | sort -rh | head -n 10'     # List top 10 files by size
-    alias wifichannels='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | sort -n'  # List wifi channels of networks in range
-    alias wifichannels_mine='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | sort -r -n -k3 | grep "iot\|ari\|sag\|lib\|cen\|bai"'
+    alias wifi_channels='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | sort -n'  # List wifi networks in range by channel
+    alias wifi_signals='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi'  # List wifi networks in range by signal strength
+    alias wifi_signals_mine='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | grep "ari\|sag\|cen\|ber\|enc\|fie\|man\|iot\|bai"' # List my wifi networks by signal strength
+    alias wifi_ssids='nmcli -f "CHAN,BARS,SIGNAL,SSID,SECURITY" d wifi | tail +2 | sort -k4'  # List wifi networks in range by ssid
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias archinfo='uname -a'
     alias cpuinfo='sysctl -n machdep.cpu.brand_string'              # Display CPU info
